@@ -1,0 +1,40 @@
+body {
+  width: 100%;
+  background: #ecf0f1;
+  color: #34495e;
+}
+
+.btn-green {
+  background: #2ecc71;
+}
+.btn-outline-green{
+  border: 1px solid #2ecc71;
+  background-color: #fff;
+  color: #2ecc71;
+}
+
+.btn-outline-green:hover{
+  color: #fff;
+  background-color: #2ecc71;
+}
+
+
+.nav a{
+  color: #0e0e0e;
+  font-size: 12px;
+}
+
+.nav a:hover{
+color: #34495e;
+}
+
+@media screen and (max-width: 868px) {
+#mobileNav{
+  transition: .5s ease-in-out;
+}
+.menuOpen{
+  translate: -100%;
+  transition: .5s ease-in-out;
+}
+
+}
