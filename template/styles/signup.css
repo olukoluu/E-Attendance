@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2family=Poppins&display=swap");
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-sherif;
+  
 }
 body {
   display: flex;
@@ -12,7 +12,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #dfdfdf;
-  background-image: url(../images/authBg.png);
+  background-image: url(../images/green\ back.jpg);
   background-size: cover;
 }
 .login-box {
