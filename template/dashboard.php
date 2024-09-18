@@ -1,3 +1,32 @@
+<?php  
+    session_start();
+   
+
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "lecturer_att"; 
+
+    $conn = mysqli_connect($server,$user,$pass,$db);
+
+    if(!$conn){
+        die("connection error".mysqli_connect_error());
+    }
+    
+    if(isset($_SESSION['PFNumber'])) {
+      $name = $_SESSION['Name'];
+      $email = $_SESSION['Email'];
+    } else {
+      $name = "Guest";  // Default if the session variable isn't set
+    }
+
+
+
+  
+    mysqli_close($conn)
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +40,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <title>Document</title>
+    <title>Dashboard</title>
   </head>
   <body class="d-flex position-relative">
     <!-- mobile nav -->
@@ -142,7 +171,7 @@
 
     <main class="p-md-4 pt-0 w-100">
       <div class="p-3 pt-md-0 d-flex justify-content-between align-items-center pb-2 border-bottom">
-        <h2 class="">Welcome back, Admin</h2>
+        <h2 class="">Welcome back<?php echo "$name"; ?></h2>
         <i class="bi bi-list d-block d-md-none" id="menuBtn" style="font-size: 40px"></i>
       </div>
 
@@ -176,8 +205,9 @@
               Quickly mark attendance for your class. Ensure all students are
               accounted for.
             </p>
-            <button class="p-3 submit-btn">Start Now</button>
-          </div>
+            
+            <button class="p-3 submit-btn" ><link rel="stylesheet" href="fingerprint.php">Start Now</button>
+          </div>x 
           <div class="card p-4" style="width: 380px">
             <h6>Edit Class Details</h6>
             <p>
