@@ -1,0 +1,36 @@
+query to create lecturers TABLE
+
+CREATE TABLE lecturers (
+  id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  pfn INT(11) NOT NULL,
+  pwd VARCHAR(225) NOT NULL,
+  time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE `lecturers` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `first_name` varchar(30) NOT NULL,
+ `last_name` varchar(30) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `pfn` int(11) NOT NULL,
+ `pwd` varchar(255) NOT NULL,
+ `time_sent` datetime DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
+
+
+query to create the courses TABLE
+
+CREATE TABLE `courses` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `lecturer_id` int(11) NOT NULL,
+ `course_code` varchar(10) NOT NULL,
+ `course_title` varchar(255) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`),
+ KEY `lecturer_id` (`lecturer_id`),
+ CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`lecturer_id`) REFERENCES `lecturers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8

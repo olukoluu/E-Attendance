@@ -1,25 +1,15 @@
 <?php
-     $server = "localhost";
-     $user = "root";
-     $password = "";
-     $db = "lecturer_att";
- 
-     $conn = mysqli_connect($server,$user,$password,$db);
- 
-     if(!$conn){
-         die("connection error".mysqli_connect_error());
-    }
+     include_once('connect.php');
 
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $phoneNum = $_POST['phonenum'];
         $pfnum = $_POST['pfnum'];
         $pass = $_POST['pass'];
         $cpass = $_POST['cpass'];
 
         // Check if the record exists
-        $sql = "SELECT * FROM lecturer WHERE pfnumber = ?";
+        $sql = "SELECT * FROM lecturers WHERE pfnumber = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $pfnum);
         mysqli_stmt_execute($stmt);

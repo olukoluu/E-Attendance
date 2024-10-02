@@ -1,41 +1,27 @@
 <?php  
+    include_once('connect.php');
     session_start();
-   
-
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "lecturer_att"; 
-
-    $conn = mysqli_connect($server,$user,$pass,$db);
-
-    if(!$conn){
-        die("connection error".mysqli_connect_error());
-    }
     
-    if(isset($_SESSION['PFNumber'])) {
-      $name = $_SESSION['Name'];
+    if(isset($_SESSION['pfnum'])) {
+      $last_name = $_SESSION['LName'];
+      $pfn = $_SESSION['pfnum'];
       $email = $_SESSION['Email'];
     } else {
       $name = "Guest";  // Default if the session variable isn't set
     }
 
-
-
-  
-    mysqli_close($conn)
+    mysqli_close($conn);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/dashboard.css" />
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
-    <script defer src="boostrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="template/styles/dashboard.css" />
+    <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
+    <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -50,13 +36,13 @@
         style="height: 100vh; width: fit-content"
       >
         <a href="#" class="logo">
-          <img src="images/logo.png" class="" alt="" style="width: 40px" />
+          <img src="template/images/logo.png" class="" alt="" style="width: 40px" />
         </a>
         <ul class="nav flex-column mt-4 h-100">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="/">
               <img
-                src="images/dashboard.png"
+                src="template/images/dashboard.png"
                 alt="dashboard"
                 style="width: 25px"
               />
@@ -66,7 +52,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#"
               ><img
-                src="images/courses.png"
+                src="template/images/courses.png"
                 alt="courses"
                 style="width: 20px"
               />
@@ -76,7 +62,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <img
-                src="images/attendance.png"
+                src="template/images/attendance.png"
                 alt="attendance"
                 style="width: 25px"
               />
@@ -86,7 +72,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link"
               ><img
-                src="images/classes.png"
+                src="template/images/classes.png"
                 alt="profile"
                 style="width: 25px"
               />
@@ -95,14 +81,14 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link"
-              ><img src="images/report.png" alt="report" style="width: 25px" />
+              ><img src="template/images/report.png" alt="report" style="width: 25px" />
               <p>Report</p>
             </a>
           </li>
           <li class="nav-item mt-auto mb-5">
             <a href="#" class="nav-link"
               ><img
-                src="images/profile.png"
+                src="template/images/profile.png"
                 alt="profile"
                 style="width: 25px"
               />
@@ -119,13 +105,13 @@
       style="height: 100vh; width: fit-content"
     >
       <a href="#" class="logo">
-        <img src="images/logo.png" class="" alt="" style="width: 40px" />
+        <img src="template/images/logo.png" class="" alt="" style="width: 40px" />
       </a>
       <ul class="nav flex-column mt-4 h-100">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
+          <a class="nav-link active" aria-current="page" href="/">
             <img
-              src="images/dashboard.png"
+              src="template/images/dashboard.png"
               alt="dashboard"
               style="width: 25px"
             />
@@ -134,14 +120,14 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"
-            ><img src="images/courses.png" alt="courses" style="width: 20px" />
+            ><img src="template/images/courses.png" alt="courses" style="width: 20px" />
             <p>Courses</p>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
             <img
-              src="images/attendance.png"
+              src="template/images/attendance.png"
               alt="attendance"
               style="width: 25px"
             />
@@ -150,19 +136,19 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link"
-            ><img src="images/classes.png" alt="profile" style="width: 25px" />
+            ><img src="template/images/classes.png" alt="profile" style="width: 25px" />
             <p>Classes</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link"
-            ><img src="images/report.png" alt="report" style="width: 25px" />
+            ><img src="template/images/report.png" alt="report" style="width: 25px" />
             <p>Report</p>
           </a>
         </li>
         <li class="nav-item mt-auto">
           <a href="#" class="nav-link"
-            ><img src="images/profile.png" alt="profile" style="width: 25px" />
+            ><img src="template/images/profile.png" alt="profile" style="width: 25px" />
             <p>Profile</p>
           </a>
         </li>
@@ -171,7 +157,7 @@
 
     <main class="p-md-4 pt-0 w-100">
       <div class="p-3 pt-md-0 d-flex justify-content-between align-items-center pb-2 border-bottom">
-        <h2 class="">Welcome back<?php echo "$name"; ?></h2>
+        <h2 class="">Welcome, <?php echo $last_name; ?></h2>
         <i class="bi bi-list d-block d-md-none" id="menuBtn" style="font-size: 40px"></i>
       </div>
 
@@ -207,7 +193,7 @@
             </p>
             
             <button class="p-3 submit-btn" ><link rel="stylesheet" href="fingerprint.php">Start Now</button>
-          </div>x 
+          </div>
           <div class="card p-4" style="width: 380px">
             <h6>Edit Class Details</h6>
             <p>

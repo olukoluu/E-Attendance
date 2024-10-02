@@ -1,16 +1,6 @@
 <?php  
+    include_once('connect.php');
     session_start();
-
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "lecturer_att"; 
-
-    $conn = mysqli_connect($server,$user,$pass,$db);
-
-    if(!$conn){
-        die("Connection error: " . mysqli_connect_error());
-    }
 
     if(isset($_POST['submit'])) {
         // Capture the fingerprint ID from the form (submitted by the fingerprint reader)
