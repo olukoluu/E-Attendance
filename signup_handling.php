@@ -1,6 +1,6 @@
 <?php
      include_once('connect.php');
-     include_once('signup_function.php');
+  
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $fname = htmlspecialchars($_POST['fname']);
@@ -11,36 +11,7 @@
         $cpass = htmlspecialchars($_POST['cpass']);
 
         
-        $errors = [];
-
-        if (is_input_empty($fname, $lname, $email, $pfnum, $pass, $cpass)) {
-            $errors["input_empty"] = "Fill all fields!";
-        }
-        if (is_email_invalid($email)) {
-            $errors["email_invalid"] = "Invalid Email!";
-        }
-        if (is_email_taken($pdo, $email)) {
-            $errors["email_taken"] = "Email already taken!";
-        }
-        if (is_pfn_taken($pdo, $pfnum)) {
-            $errors["pfn_taken"] = "Pfn already taken!";
-        }
-
-        if ($errors) {
-            $_SESSION['errors_signup'] = $errors;
-            // $signup_data = [
-            //     "fname" => $fname,
-            //     "lname" => $lname,
-            //     "email" => $email,
-            //     "pfn" => $pfn
-            // ];
-
-            // $_SESSION["signup_data"] = $signup_data;
-
-
-            header("Location: template/signup.html");
-            die();
-        }
+     
          
         $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
         $sql = "INSERT INTO lecturers (first_name, last_name, email, pfn, pwd) VALUES (?, ?, ?, ?, ?)";
