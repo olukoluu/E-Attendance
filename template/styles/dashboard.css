@@ -4,6 +4,10 @@ body {
   color: #34495e;
 }
 
+.table-custom-success {
+  --bs-table-color: white;
+    --bs-table-bg: limegreen;
+}
 
 aside{
   background-color: #DBFFDB;
