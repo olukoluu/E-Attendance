@@ -2,18 +2,10 @@
     include_once('connect.php');
     session_start();
     
-    if(isset($_SESSION['pfnum'])) {
-      $last_name = $_SESSION['LName'];
-      $pfn = $_SESSION['pfnum'];
-      $email = $_SESSION['Email'];
-      $verified = $_SESSION['verified'];
-    } else {
-      $name = "Guest";  // Default if the session variable isn't set
-    }
+    $last_name = $_SESSION['LName'];
+    $verified = $_SESSION['verified'];
 
-    mysqli_close($conn);
-
-    if($verified){
+    if($_SESSION['verified'] === true){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,6 +95,9 @@ include_once "sidenav.php";
 
   </script>
 </html>
-<?php } else{
+<?php 
+    mysqli_close($conn); 
+} else{
   header("Location: template/login.html");
-} ?>
+}
+ ?>

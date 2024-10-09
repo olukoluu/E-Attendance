@@ -1,36 +1,59 @@
 <?php
-     include_once('connect.php');
-  
+session_start();
+include_once('connect.php');
+include_once('signup_function.php');
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $fname = htmlspecialchars($_POST['fname']);
-        $lname = htmlspecialchars($_POST['lname']);
-        $email = htmlspecialchars($_POST['email']);
-        $pfnum = htmlspecialchars($_POST['pfnum']);
-        $pass = htmlspecialchars($_POST['pass']);
-        $cpass = htmlspecialchars($_POST['cpass']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $pfnum = $_POST['pfnum'];
+    $pass = $_POST['pass'];
+    $cpass = $_POST['cpass'];
 
-        
-     
-         
-        $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO lecturers (first_name, last_name, email, pfn, pwd) VALUES (?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, "sssis", $fname, $lname, $email, $pfnum, $hashed_password);
+    $errors = [];
 
-            // Execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Redirect to the login page
-                header("Location: template/login.html");
-                // Close the prepared statement
-            mysqli_stmt_close($stmt);
-                exit;  // Stop further script execution after redirection
-            } else {
-                echo "Error executing the query: " . mysqli_error($conn);
-            }
+    if (is_input_empty($fname, $lname, $email, $pfnum, $pass, $cpass)) {
+        $errors["input_empty"] = "Fill all fields!";
+    }
+    if (is_password_same($pass, $cpass)) {
+        $errors["password_different"] = "Password not the same!";
+    }
+    if (is_email_invalid($email)) {
+        $errors["email_invalid"] = "Invalid Email!";
+    }
+    if (is_email_taken($conn, $email)) {
+        $errors["email_taken"] = "Email already taken!";
+    }
+    if (is_pfn_taken($conn, $pfnum)) {
+        $errors["pfn_taken"] = "Pfn already taken!";
+    }
+
+    if ($errors) {
+        $_SESSION['errors_signup'] = $errors;
+        header("Location: ../signup.php");
+        die();
+    }
 
 
-        // Check if the record exists
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO lecturers (first_name, last_name, email, pfn, pwd) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sssis", $fname, $lname, $email, $pfnum, $hashed_password);
+
+    // Execute the prepared statement
+    if (mysqli_stmt_execute($stmt)) {
+        // Redirect to the login page
+        header("Location: template/login.html");
+        // Close the prepared statement
+        mysqli_stmt_close($stmt);
+        exit;  // Stop further script execution after redirection
+    } else {
+        echo "Error executing the query: " . mysqli_error($conn);
+    }
+
+
+    // Check if the record exists
     //     $sql = "SELECT * FROM lecturers WHERE pfnumber = ?";
     //     $stmt = mysqli_prepare($conn, $sql);
     //     mysqli_stmt_bind_param($stmt, "i", $pfnum);
@@ -72,7 +95,6 @@
     //         // Close the prepared statement
     //         mysqli_stmt_close($stmt);
     //     }
-    }
+}
 
 mysqli_close($conn);
-?>
