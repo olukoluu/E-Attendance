@@ -4,6 +4,16 @@ body {
   color: #34495e;
 }
 
+.table-custom-success {
+  --bs-table-color: white;
+    --bs-table-bg: limegreen;
+}
+
+aside{
+  background-color: #DBFFDB;
+}
+
+
 .nav a{
   color: #0e0e0e;
   font-size: 12px;
@@ -24,6 +34,7 @@ color: #34495e;
     background: #000;
     transform: scale(1.05,1);
 }
+
 
 @media screen and (max-width: 868px) {
 #mobileNav{
