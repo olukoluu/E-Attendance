@@ -35,6 +35,10 @@ color: #34495e;
     transform: scale(1.05,1);
 }
 
+input::placeholder {
+  margin-left: 200px;
+}
+
 
 @media screen and (max-width: 868px) {
 #mobileNav{
