@@ -28,33 +28,32 @@
         <ul class="nav flex-column mt-4 h-100">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="hoddashboard.html">
-                    <img src="images/dashboard.png" alt="dashboard" style="width: 25px" />
+                    <img src="images/dashboard.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="courses.html">
-                    <img src="images/courses.png" alt="dashboard" style="width: 25px" />
+                    <img src="images/courses.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
                     <p>Courses</p>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="lecturer.html" class="nav-link"><img src="images/classes.png" alt="profile"
-                        style="width: 25px" />
+                        style="width: 25px; padding-top: 20px;" />
                     <p>Lecturers</p>
 
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><img src="images/report.png" alt="report" style="width: 25px" />
+                <a href="#" class="nav-link"><img src="images/report.png" alt="report" style="width: 25px; padding-top: 20px;" />
                     <p>Sign out</p>
                 </a>
             </li>
 
         </ul>
     </aside>
-
 
     <!DOCTYPE html>
     <html lang="en">
@@ -86,7 +85,7 @@
                         <h1 style="font-size: 20px;">Lecturers</h1>
                         <br>
                         <p>
-                            <input type="Lecturer" placeholder="Lecturer name"
+                            <input type="Lecturer" placeholder="PF Number"
                                 style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;">
                         </p>
                     </div>
@@ -100,25 +99,12 @@
                 <div class="row">
                     <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
                         <h1 style="font-size: 20px;">Course Code</h1>
+                        <br>
                         <p>
-                            <div class="dropdown" style="margin-top: 40px; margin-bottom: -20px;">
-                                <select name="Courses" id="Courses" style="border: none; border-bottom: 2px solid gray; background-color: transparent; width: 50%;">
-                                    <option value="#">Select Courses</option>
-                                    <option value="#">CSC 104: Introduction To Computer Science</option>
-                                    <option value="#">CSC 219: Python Programming</option>
-                                    <option value="#">CSC 305: Web development</option>
-                                    <option value="#">CSC 225: Data Structure</option>
-                                    <option value="#">CSC 217: Operating System</option>
-                                    <option value="#">CSC 322: Networking</option>
-                                    <option value="#">CSC 411: Information Science</option>
-                                    <option value="#">CSC 129: Introduction to Statistics</option>
-                                    <option value="#">CSC 429: Human Computer Interaction</option>
-                                    <option value="#">CSC 425: Introduction to Cybersecurity</option>
-
-                                </select>
-                                <br><br>
-                            </div>
+                            <input type="Course Code" placeholder="Course Code"
+                                style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;">
                         </p>
+                        
                     </div>
                 </div>
             </div>
@@ -129,10 +115,10 @@
                 style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
-                        <h1 style="font-size: 20px;">Review</h1>
+                        <h1 style="font-size: 20px;">Course Title</h1>
                         <br>
                         <p>
-                            <input type="Review" placeholder="Review"
+                            <input type="Course Title" placeholder="Course Title"
                                 style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;">
                         </p>
                     </div>
@@ -140,6 +126,24 @@
             </div>
             <br>
             <br>
+
+            <div class="col-md-sm-12"
+                style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
+                        <h1 style="font-size: 20px;">Level</h1>
+                        <br>
+                        <p>
+                            <input type="Level" placeholder="Level"
+                                style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
             <button type="button" class="btn btn-success" style="margin-bottom: 30px; justify-self: center;">Submit</button>
         </div>
     

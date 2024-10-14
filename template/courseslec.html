@@ -29,27 +29,26 @@
     </a>
     <ul class="nav flex-column mt-4 h-100">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="hoddashboard.html">
+        <a class="nav-link active" aria-current="page" href="teacherdashboard.html">
           <img src="images/dashboard.png"  alt="dashboard" style="width: 25px; padding-top: 20px;"   />
           <p>Dashboard</p>
         </a>
       </li>
       
-
       <li class="nav-item">
-        <a href="courses.html" class="nav-link"
-          ><img src="images/courses.png" alt="profile" style="width: 25px; padding-top: 20px;" />
-          <p>Courses</p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="lecturer.html">
+        <a class="nav-link" href="attendance.html">
           <img
-            src="images/classes.png"
+            src="images/attendance.png"
             alt="attendance"
             style="width: 25px; padding-top: 20px;"
           />
-          <p>Lecturer</p>
+          <p>Attendance</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="courseslec.html" class="nav-link"
+          ><img src="images/classes.png" alt="profile" style="width: 25px; padding-top: 20px;" />
+          <p>Courses</p>
         </a>
       </li>
       <li class="nav-item">
@@ -72,7 +71,14 @@
                         <div class="col-sm-6">
                             <h2 style="font-size: 40px;">All Courses</h2>
                         </div>
-                        
+                        <div class="col-sm-6">
+                            <div class="input-box" style="float: right;"></div>
+                            <h2 style="font-size: 20px; margin-top: 20px; margin-left: 400px;">
+                                <input type="Search" placeholder="Search...">
+                                <i class='bx bxs-lock-alt' style="size: 10px;"></i>
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,88 +113,18 @@
                     <td>Python Programming</td>
                     <td>Assigned</td>
 
+    </body>
 
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>CSC 305</td>
-                    <td>Web development</td>
-                    <td>Assigned</td>
-
-
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>CSC 225</td>
-                    <td>Data Structure</td>
-                    <td>Unassigned</td>
-
-
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>CSC 217</td>
-                    <td>Operating System</td>
-                    <td>Assigned</td>
-
-
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>CSC 322</td>
-                    <td>Networking</td>
-                    <td>Assigned</td>
-
-
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>CSC 411</td>
-                    <td>Information Science</td>
-                    <td>Unassigned</td>
-
-
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>STA 129</td>
-                    <td>Introduction to Statistics</td>
-                    <td>Unassigned</td>
-
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>CSC 429</td>
-                    <td>Human Computer Interaction</td>
-                    <td>Assigned</td>
-
-
-                </tr>
-                <td>10</td>
-                <td>CSC 425</td>
-                <td>Introduction to Cybersecurity</td>
-                <td>Assigned</td>
-
-
-                </tr>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-
-</body>
 <script>
     var menuBtn = document.getElementById('menuBtn');
     var mobileNav = document.getElementById('mobileNav');
     // mobileNav.classList.add("menuOpen")
     menuBtn.addEventListener('click', toggleMenu);
     function toggleMenu() {
-        mobileNav.classList.toggle("menuOpen");
+    mobileNav.classList.toggle("menuOpen");
     }
-
+                    
 </script>
 
 </html>
+                    
