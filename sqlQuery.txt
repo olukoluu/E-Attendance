@@ -10,26 +10,28 @@ CREATE TABLE lecturers (
   time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )
 
-CREATE TABLE `lecturers` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `first_name` varchar(30) NOT NULL,
- `last_name` varchar(30) NOT NULL,
- `email` varchar(50) NOT NULL,
- `pfn` int(11) NOT NULL,
- `pwd` varchar(255) NOT NULL,
- `time_sent` datetime DEFAULT CURRENT_TIMESTAMP,
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8
-
 
 query to create the courses TABLE
 
 CREATE TABLE courses ( 
   id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
   course_code VARCHAR(30) NOT NULL, 
-  course_title VARCHAR(30) NOT NULL, 
+  course_title VARCHAR(255) NOT NULL, 
   level VARCHAR(50) NOT NULL, 
   lecturer_id INT(11), 
   FOREIGN KEY (lecturer_id) REFERENCES lecturers(id) ON DELETE SET NULL, 
   time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
   );
+
+insert courses into db
+
+  INSERT INTO courses (course_code, course_title, level, lecturer_id) 
+VALUES ("CSC 219", "Python Programming", 200, NULL),
+("CSC 305", "Web development", 300, NULL),
+("CSC 225", "Data Structure", 200, NULL),
+("CSC 217", "Operating System", 200, NULL),
+("CSC 322", "Networking", 300, NULL),
+("CSC 411", "Information Science", 400, NULL),
+("STA 129", "Introduction to Statistics", 100, NULL),
+("CSC 429", "Human Computer Interaction", 400, NULL),
+("CSC 425", "Introduction to Cybersecurity", 400, NULL)

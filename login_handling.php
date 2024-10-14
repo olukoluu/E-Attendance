@@ -24,9 +24,15 @@ include_once('connect.php');
                 $_SESSION['LName'] = $row["last_name"];
                 $_SESSION['Email'] = $row["email"];
                 $_SESSION['pfnum'] = $row["pfn"];
+                $_SESSION['is_hod'] = $row["is_hod"];
                 $_SESSION['verified'] = $verified;
 
-                header('Location: dashboard.php');
+                if($row["is_hod"] == 1){
+                    header('Location: hoddashboard.php');
+                }else {
+                    header('Location: teacherdashboard.php');   
+                }
+
                 exit();                
             }else{
                 echo '<script>
