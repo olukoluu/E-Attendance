@@ -4,20 +4,20 @@
             </a>
             <ul class="nav flex-column mt-4 h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="hoddashboard.html">
+                    <a class="nav-link active" aria-current="page" href="hoddashboard.php">
                         <img src="template/images/dashboard.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="courses.html">
+                    <a class="nav-link active" aria-current="page" href="courses.php">
                         <img src="template/images/courses.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
                         <p>Courses</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="lecturer.html" class="nav-link"><img src="template/images/classes.png" alt="profile" style="width: 25px; padding-top: 20px;" />
+                    <a href="lecturer.php" class="nav-link"><img src="template/images/classes.png" alt="profile" style="width: 25px; padding-top: 20px;" />
                         <p>Lecturers</p>
 
                     </a>

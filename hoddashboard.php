@@ -63,102 +63,24 @@ if ($_SESSION['verified'] === true) {
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $sql = "SELECT * FROM courses";
+                            $stmt = mysqli_query($conn,$sql);
+
+                            while($row = mysqli_fetch_array($stmt)){
+                                    echo '
                             <tr>
-                                <td>1</td>
-                                <td>CSC 113</td>
-                                <td>Introduction to computer science</td>
+                                <td>'.$row['id'].'</td>
+                                <td>'.$row['course_code'].'</td>
+                                <td>'.$row['course_title'].'</td>
                                 <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>CSC 219</td>
-                                <td>Python Programming</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
+                                    <a class="btn btn-success" href="assigncourse.php" role="button">Assign</a>
                                 </td>
 
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>CSC 305</td>
-                                <td>Web development</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>CSC 225</td>
-                                <td>Data Structure</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>CSC 217</td>
-                                <td>Operating System</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>CSC 322</td>
-                                <td>Networking</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>CSC 411</td>
-                                <td>Information Science</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>STA 129</td>
-                                <td>Introduction to Statistics</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>CSC 429</td>
-                                <td>Human Computer Interaction</td>
-                                <td>
-                                    <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                                </td>
-
-
-                            </tr>
-                            <td>10</td>
-                            <td>CSC 425</td>
-                            <td>Introduction to Cybersecurity</td>
-                            <td>
-                                <a class="btn btn-success" href="assigncourse.html" role="button">Assign</a>
-                            </td>
-
-
-                            </tr>
-
-                            </tr>
+                            </tr>';
+                            }
+                            ?>
+                            
                         </tbody>
                     </table>
                 </div>
