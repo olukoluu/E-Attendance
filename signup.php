@@ -40,7 +40,7 @@ include_once('signup_function.php');
                     <label for="submit">SIGN UP</label>
                 </a>
                 <div class="login-link">
-                    <p>Already have an account? <a href="/template/login.html">Login</a></p>
+                    <p>Already have an account? <a href="login.php">Login</a></p>
                 </div>
             </div>
         </div>

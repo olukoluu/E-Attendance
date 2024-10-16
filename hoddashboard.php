@@ -2,7 +2,6 @@
 include_once('connect.php');
 session_start();
 
-$last_name = $_SESSION['LName'];
 $verified = $_SESSION['verified'];
 
 if ($_SESSION['verified'] === true) {
@@ -59,28 +58,42 @@ if ($_SESSION['verified'] === true) {
                                 <th>#</th>
                                 <th>Course code</th>
                                 <th>Course title</th>
-                                <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $sql = "SELECT * FROM courses";
-                            $stmt = mysqli_query($conn,$sql);
+                            $stmt = mysqli_query($conn, $sql);
 
-                            while($row = mysqli_fetch_array($stmt)){
-                                    echo '
+                            $sn = 1;
+                            while ($row = mysqli_fetch_array($stmt)) {
+                                echo '
                             <tr>
-                                <td>'.$row['id'].'</td>
-                                <td>'.$row['course_code'].'</td>
-                                <td>'.$row['course_title'].'</td>
+                                <td>' . $sn . '</td>
+                                <td>' . $row['course_code'] . '</td>
+                                <td>' . $row['course_title'] . '</td>
                                 <td>
-                                    <a class="btn btn-success" href="assigncourse.php" role="button">Assign</a>
+                                <form method="POST" action=" ' . htmlentities($_SERVER['PHP_SELF']) . '">
+                                <input type="hidden" name="course_title" value="' . $row['course_title'] . '">
+                                    <input type="hidden" name="course_code" value="' . $row['course_code'] . '">
+                                    <input type="hidden" name="course_level" value="' . $row['level'] . '">
+                                    <button name="manage" class="btn btn-success">Manage</button>
+                                </form>
                                 </td>
 
                             </tr>';
+                                $sn++;
+                            }
+
+                            if (isset($_POST['manage'])) {
+                                $_SESSION['course_title'] = $_POST['course_title'];
+                                $_SESSION['course_code'] = $_POST['course_code'];
+                                $_SESSION['course_level'] = $_POST['course_level'];
+                                header('Location: assigncourse.php');
                             }
                             ?>
-                            
+
                         </tbody>
                     </table>
                 </div>

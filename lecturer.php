@@ -65,20 +65,22 @@ if ($_SESSION['verified'] === true) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name, lecturers.email, GROUP_CONCAT(courses.course_code) AS courses FROM lecturers LEFT JOIN courses ON lecturers.id = courses.lecturer_id GROUP BY lecturers.id";
+                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name, lecturers.email, GROUP_CONCAT(courses.course_code) AS courses FROM lecturers LEFT JOIN courses ON lecturers.id = courses.lecturer_id WHERE lecturers.is_hod = 0 GROUP BY lecturers.id";
                         $stmt = mysqli_query($conn, $sql);
+                        $sn = 1;
 
                         while ($row = mysqli_fetch_array($stmt)) {
                             $courses  = !empty($row['courses']) ? $row['courses'] : 'No course';
                             echo '
                         <tr>
-                            <td>' . $row['id'] . '</td>
+                            <td>' . $sn . '</td>
                             <td>' . $row['first_name'] . '</td>
                             <td>' . $row['last_name'] . '</td>
                             <td>' . $row['email'] . '</td>
                             <td>' . $courses . '</td>
                         </tr>
                         ';
+                        $sn++;
                         }
                         ?>
 
