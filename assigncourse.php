@@ -2,6 +2,7 @@
 include_once('connect.php');
 session_start();
 
+$course_id = $_SESSION['course_id'];
 $course_title = $_SESSION['course_title'];
 $course_code = $_SESSION['course_code'];
 $course_level = $_SESSION['course_level'];
@@ -42,7 +43,7 @@ if ($_SESSION['verified'] === true) {
             <br>
             <br>
 
-            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
 
                 <div class="col-md-sm-12" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
                     <div class="row">
@@ -50,15 +51,13 @@ if ($_SESSION['verified'] === true) {
                             <h1 style="font-size: 20px;">Lecturers</h1>
                             <br>
                             <p>
-                                <select name="PF NUMBER" id="PF NUMBER" style="border: none; border-bottom: solid 2px gray; background-color: transparent; width: 100%;">
-                                    <option value="" placeholder="Lecturers"> Select Lecturer</option>
+                                <select name="lecturer_id" id="lecturer_id" style="border: none; border-bottom: solid 2px gray; background-color: transparent; width: 100%;">
+                                    <option value=""> Select Lecturer</option>
                                     <?php
-                                    $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name , lecturers.pfn
-                                FROM lecturers 
-                                LEFT JOIN courses ON lecturers.id = courses.lecturer_id AND courses.course_code = ?
-                                WHERE courses.lecturer_id IS NULL";
+                                    $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name , lecturers.pfn FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id AND lecturer_course.course_id = ? WHERE lecturer_course.lecturer_id IS NULL AND lecturers.is_hod = 0;";
+                                
                                     $stmt = $conn->prepare($sql);
-                                    $stmt->bind_param("s", $course_code);
+                                    $stmt->bind_param("i", $course_id);
                                     $stmt->execute();
                                     $result = $stmt->get_result();
                                     while ($row = $result->fetch_array()) {
@@ -66,6 +65,7 @@ if ($_SESSION['verified'] === true) {
                                     <option value="' . $row['id'] . '">' . $row['last_name'] . ' ' . $row['first_name'] . '</option>
                         ';
                                     }
+                                    mysqli_stmt_close($stmt);
                                     ?>
                                 </select>
                             </p>
@@ -80,9 +80,7 @@ if ($_SESSION['verified'] === true) {
                         <div class="col-md-sm-12 " style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
                             <h1 style="font-size: 20px;">Course</h1>
                             <br>
-                            <p style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
-                                <?php echo $course_code . ': ' . $course_title; ?>
-                            </p>
+                            <input type="text" name="course_code" value="<?php echo $course_code . ': ' . $course_title; ?>" readonly style="margin-bottom: 20px; border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
                             <!-- <p>
                                 <select id="courses" onchange="myFunction()" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
                                     <option value="" placeholder="Lecturers"> Select Courses</option>
@@ -122,14 +120,22 @@ if ($_SESSION['verified'] === true) {
                 <br>
                 <br>
 
-                <button type="button" name="assign" class="btn btn-success" style="margin-bottom: 30px; justify-self: center;">Assign</button>
+                <button type="submit" name="assign" class="btn btn-success" style="margin-bottom: 30px; justify-self: center;">Assign</button>
             </form>
         </div>
         <?php
 
         if (isset($_POST['assign'])) {
-            $sql = "INSERT INTO ";
-            $stmt = mysqli_query($conn, $sql);
+
+            $sql = "INSERT INTO lecturer_course (lecturer_id, course_id) VALUES (?,?)";
+            
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ii", $_POST['lecturer_id'],$course_id, );
+            if($stmt->execute()){
+                header('Location: hoddashboard.php');
+                die();
+            }
+
         }
         ?>
 
@@ -144,12 +150,12 @@ if ($_SESSION['verified'] === true) {
             mobileNav.classList.toggle("menuOpen");
         }
 
-        function myFunction() {
-            var x = document.getElementById("courses");
-            let y = x.options[x.selectedIndex].getAttribute('data-level');
+        // function myFunction() {
+        //     var x = document.getElementById("courses");
+        //     let y = x.options[x.selectedIndex].getAttribute('data-level');
 
-            document.getElementById("demo").innerHTML = y;
-        }
+        //     document.getElementById("demo").innerHTML = y;
+        // }
     </script>
 
     </html>

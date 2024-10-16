@@ -64,12 +64,12 @@ if ($_SESSION['verified'] === true) {
           </thead>
           <tbody>
             <?php
-            $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.lecturer_id, lecturers.pfn FROM courses LEFT JOIN lecturers ON lecturers.id = courses.lecturer_id GROUP BY courses.id";
+            $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id GROUP BY courses.id";
             $stmt = mysqli_query($conn, $sql);
 
             $sn = 1;
             while ($row = mysqli_fetch_array($stmt)) {
-              $assigned = !empty($row['lecturer_id']) ? 'Assigned': 'Not Assigned';
+              $assigned = !empty($row['pfn']) ? 'Assigned': 'Not Assigned';
               $pfn = !empty($row['pfn']) ? $row['pfn'] : 'Not Assigned';
               echo '
             <tr>

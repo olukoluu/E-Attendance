@@ -35,3 +35,14 @@ VALUES ("CSC 219", "Python Programming", 200, NULL),
 ("STA 129", "Introduction to Statistics", 100, NULL),
 ("CSC 429", "Human Computer Interaction", 400, NULL),
 ("CSC 425", "Introduction to Cybersecurity", 400, NULL)
+
+create lecturer_courses TABLE
+
+CREATE TABLE lecturer_course(
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    lecturer_id INT(11),
+    course_id INT(11),
+  	FOREIGN KEY (lecturer_id) REFERENCES lecturers(id) ON DELETE SET NULL,
+  	FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE SET NULL, 
+  	time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);

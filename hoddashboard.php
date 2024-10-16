@@ -75,6 +75,7 @@ if ($_SESSION['verified'] === true) {
                                 <td>' . $row['course_title'] . '</td>
                                 <td>
                                 <form method="POST" action=" ' . htmlentities($_SERVER['PHP_SELF']) . '">
+                                <input type="hidden" name="course_id" value="' . $row['id'] . '">
                                 <input type="hidden" name="course_title" value="' . $row['course_title'] . '">
                                     <input type="hidden" name="course_code" value="' . $row['course_code'] . '">
                                     <input type="hidden" name="course_level" value="' . $row['level'] . '">
@@ -87,6 +88,7 @@ if ($_SESSION['verified'] === true) {
                             }
 
                             if (isset($_POST['manage'])) {
+                                $_SESSION['course_id'] = $_POST['course_id'];
                                 $_SESSION['course_title'] = $_POST['course_title'];
                                 $_SESSION['course_code'] = $_POST['course_code'];
                                 $_SESSION['course_level'] = $_POST['course_level'];
