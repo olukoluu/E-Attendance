@@ -64,45 +64,24 @@ if ($_SESSION['verified'] === true) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>CSC 113, 419,</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Emily</td>
-                            <td>Davis</td>
-                            <td>emilydavis@gmail.com</td>
-                            <td>CSC 304, 212</td>
+                        <?php
+                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name, lecturers.email, GROUP_CONCAT(courses.course_code) AS courses FROM lecturers LEFT JOIN courses ON lecturers.id = courses.lecturer_id GROUP BY lecturers.id";
+                        $stmt = mysqli_query($conn, $sql);
 
-
-                        </tr>
+                        while ($row = mysqli_fetch_array($stmt)) {
+                            $courses  = !empty($row['courses']) ? $row['courses'] : 'No course';
+                            echo '
                         <tr>
-                            <td>3</td>
-                            <td>Adam</td>
-                            <td>Sandler</td>
-                            <td>adamsandler@gmail.com</td>
-                            <td>CSC 312, 405</td>
+                            <td>' . $row['id'] . '</td>
+                            <td>' . $row['first_name'] . '</td>
+                            <td>' . $row['last_name'] . '</td>
+                            <td>' . $row['email'] . '</td>
+                            <td>' . $courses . '</td>
+                        </tr>
+                        ';
+                        }
+                        ?>
 
-
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Chris</td>
-                            <td>Middleton</td>
-                            <td>chrismiddleton@gmail.com</td>
-                            <td>CSC 111, 124</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Charles</td>
-                            <td>Elton</td>
-                            <td>charleselton1@gmail.com</td>
-                            <td>CSC 201, 425</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

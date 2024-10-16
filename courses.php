@@ -28,9 +28,9 @@ if ($_SESSION['verified'] === true) {
 
   <body class="d-flex position-relative">
 
-  <?php
-        include_once "hodsidenav.php";
-        ?>
+    <?php
+    include_once "hodsidenav.php";
+    ?>
 
 
     <div class="container">
@@ -63,86 +63,26 @@ if ($_SESSION['verified'] === true) {
             </tr>
           </thead>
           <tbody>
+            <?php
+            $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.lecturer_id, lecturers.pfn FROM courses LEFT JOIN lecturers ON lecturers.id = courses.lecturer_id GROUP BY courses.id";
+            $stmt = mysqli_query($conn, $sql);
+
+            $sn = 1;
+            while ($row = mysqli_fetch_array($stmt)) {
+              $assigned = !empty($row['lecturer_id']) ? 'Assigned': 'Not Assigned';
+              $pfn = !empty($row['pfn']) ? $row['pfn'] : 'Not Assigned';
+              echo '
             <tr>
-              <td>1</td>
-              <td>CSC 113</td>
-              <td>Introduction to computer science</td>
-              <td>Assigned</td>
-
-
+              <td>'.$sn.'</td>
+              <td>'.$row['course_code'].'</td>
+              <td>'.$row['course_title'].'</td>
+              <td>'.$assigned.'</td>
+              <td>'.$pfn.'</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>CSC 219</td>
-              <td>Python Programming</td>
-              <td>Assigned</td>
-
-
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>CSC 305</td>
-              <td>Web development</td>
-              <td>Assigned</td>
-
-
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>CSC 225</td>
-              <td>Data Structure</td>
-              <td>Unassigned</td>
-
-
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>CSC 217</td>
-              <td>Operating System</td>
-              <td>Assigned</td>
-
-
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>CSC 322</td>
-              <td>Networking</td>
-              <td>Assigned</td>
-
-
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>CSC 411</td>
-              <td>Information Science</td>
-              <td>Unassigned</td>
-
-
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>STA 129</td>
-              <td>Introduction to Statistics</td>
-              <td>Unassigned</td>
-
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>CSC 429</td>
-              <td>Human Computer Interaction</td>
-              <td>Assigned</td>
-
-
-            </tr>
-            <td>10</td>
-            <td>CSC 425</td>
-            <td>Introduction to Cybersecurity</td>
-            <td>Assigned</td>
-
-
-            </tr>
-
-            </tr>
+              ';
+              $sn++;
+            }
+            ?>
           </tbody>
         </table>
       </div>
