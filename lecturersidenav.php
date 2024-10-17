@@ -4,14 +4,14 @@
       </a>
       <ul class="nav flex-column mt-4 h-100">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="teacherdashboard.html">
+          <a class="nav-link active" aria-current="page" href="teacherdashboard.php">
             <img src="images/dashboard.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
             <p>Dashboard</p>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="attendance.html">
+          <a class="nav-link" href="attendance.php">
             <img src="images/attendance.png" alt="attendance" style="width: 25px; padding-top: 20px;" />
             <p>Attendance</p>
           </a>

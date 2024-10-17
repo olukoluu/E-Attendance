@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/login.css" />
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
-    <script defer src="boostrap/js/bootstrap.bundle.min.js"></script>
-    <title>Log In</title>
+    <link rel="stylesheet" href="template/styles/login.css" />
+    <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
+    <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
+    <title>Lecturer log in page</title>
 </head>
 <body>
     <form action="../login_handling.php" method="POST">
@@ -37,7 +37,7 @@
                 </a>
                 </div>
                     <div class="sign-up-link">
-                        <p>Don't have an account? <a href="../signup.php">Sign Up</a></p>
+                        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                 </div>
             </div>
         </div>

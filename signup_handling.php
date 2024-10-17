@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (is_input_empty($fname, $lname, $email, $pfnum, $pass, $cpass)) {
         $errors["input_empty"] = "Fill all fields!";
     }
-    if (is_password_same($pass, $cpass)) {
+    if (!is_password_same($pass, $cpass)) {
         $errors["password_different"] = "Password not the same!";
     }
     if (is_email_invalid($email)) {
