@@ -64,7 +64,7 @@ if ($_SESSION['verified'] === true) {
           </thead>
           <tbody>
             <?php
-            $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id GROUP BY courses.id";
+            $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id GROUP BY courses.id ORDER BY pfn DESC";
             $stmt = mysqli_query($conn, $sql);
 
             $sn = 1;
