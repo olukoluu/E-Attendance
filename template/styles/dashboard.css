@@ -13,7 +13,6 @@ aside{
   background-color: #DBFFDB;
 }
 
-
 .nav a{
   color: #0e0e0e;
   font-size: 12px;
@@ -44,5 +43,4 @@ color: #34495e;
   translate: -100%;
   transition: .5s ease-in-out;
 }
-
 }
