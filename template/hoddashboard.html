@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/dashboard.css" />
 
     <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/5652bcddcf.js" crossorigin="anonymous"></script>
     <script defer src="boostrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <title>Document</title>
@@ -42,8 +43,26 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><img src="images/report.png" alt="report" style="width: 25px; padding-top: 20px;" />
-                    <p>Sign out</p>
+                <img src="images/report.png" alt="report" style="width: 25px; padding-top: 20px;"/>
+                <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> 
+                    <p>sign out</p>
+                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-triangle-exclamation"></i>Confirm sign out </h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>are you sure you want to sign out of your account?</h4>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sign Out</button>
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Cancel!</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>            
                 </a>
             </li>
 
@@ -184,10 +203,6 @@
          </table>
      </div>
  
- 
- 
-
- 
 
 </body>
 <script>
@@ -198,7 +213,7 @@
     function toggleMenu() {
         mobileNav.classList.toggle("menuOpen");
     }
-
+   
 </script>
 
 </html>
