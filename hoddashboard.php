@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once('connect.php');
 session_start();
 
@@ -14,10 +15,10 @@ if ($_SESSION['verified'] === true) {
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/template/styles/dashboard.css" />
+        <link rel="stylesheet" href="template/styles/dashboard.css" />
 
-        <link rel="stylesheet" href="/template/boostrap/css/bootstrap.min.css" />
-        <script defer src="/template/boostrap/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
+        <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <title>Document</title>
     </head>
@@ -74,7 +75,7 @@ if ($_SESSION['verified'] === true) {
                                 <td>' . $row['course_code'] . '</td>
                                 <td>' . $row['course_title'] . '</td>
                                 <td>
-                                <form method="POST" action=" ' . htmlentities($_SERVER['PHP_SELF']) . '">
+                                <form method="POST" action="' . htmlentities($_SERVER['PHP_SELF']) . '">
                                 <input type="hidden" name="course_id" value="' . $row['id'] . '">
                                 <input type="hidden" name="course_title" value="' . $row['course_title'] . '">
                                     <input type="hidden" name="course_code" value="' . $row['course_code'] . '">
@@ -93,6 +94,7 @@ if ($_SESSION['verified'] === true) {
                                 $_SESSION['course_code'] = $_POST['course_code'];
                                 $_SESSION['course_level'] = $_POST['course_level'];
                                 header('Location: assigncourse.php');
+                                // echo $_POST['course_id'];
                             }
                             ?>
 

@@ -14,7 +14,7 @@
           <div class="w-100 d-flex justify-content-between">
             <h5>
               <a class="navbar-brand"></a>
-                <img src="images/logo.png" alt="logo" width="50px">
+                <img src="template/images/logo.png" alt="logo" width="50px">
               </a>
               <div style="display: inline; padding-left: 20px;">
                 <b>E-Attendance</b>

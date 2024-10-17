@@ -4,6 +4,7 @@ session_start();
 
 $last_name = $_SESSION['LName'];
 $verified = $_SESSION['verified'];
+$pfn= $_SESSION['pfnum'] ;
 
 if ($_SESSION['verified'] === true) {
 ?>
@@ -14,10 +15,10 @@ if ($_SESSION['verified'] === true) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/template/styles/dashboard.css" />
+    <link rel="stylesheet" href="template/styles/dashboard.css" />
 
-    <link rel="stylesheet" href="/template/boostrap/css/bootstrap.min.css" />
-    <script defer src="/template/boostrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
+    <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <title>Document</title>
   </head>
@@ -26,12 +27,12 @@ if ($_SESSION['verified'] === true) {
 
 
     <?php
-    include_once "hodsidenav.php";
+    include_once "lecturersidenav.php";
     ?>
 
     <main class="p-md-4 pt-0 w-100">
       <div class="p-3 pt-md-0 d-flex justify-content-between align-items-center pb-2 border-bottom">
-        <h4 class="">Welcome back, Lecturer</h4>
+        <h4 class="">Welcome back, <?php echo $last_name?></h4>
         <i class="bi bi-list d-block d-md-none" id="menuBtn" style="font-size: 40px"></i>
       </div>
 
@@ -58,21 +59,32 @@ if ($_SESSION['verified'] === true) {
       <section class="mt-md-5 pt-5">
         <h5>Asssigned Courses</h5>
         <div class="row row-cols-md-3 gap-4 justify-content-center mt-4">
-          <div class="card p-3" style="width: 380px">
-            <p>Course Title: Introduction to computer science</p>
-            <p>Course Code: CSC 112</p>
-            <p>Level: 100l</p>
+        <?php
+                                    $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.level,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id WHERE lecturers.pfn = ? GROUP BY courses.id ORDER BY pfn DESC";
+                                
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->bind_param("i", $pfn);
+                                    $stmt->execute();
+                                    
+        $count = mysqli_stmt_num_rows($stmt);
+        if ($count >= 1) {
+                                    $result = $stmt->get_result();
+                                         while ($row = $result->fetch_array()) {
+                                        echo '
+                                    <div class="card p-3" style="width: 380px">
+            <p>Course Title: '.$row["course_title"].'</p>
+            <p>Course Code: '.$row["course_code"].'</p>
+            <p>Level: '.$row["level"].'</p>
+            
           </div>
-          <div class="card p-3" style="width: 380px">
-            <p>Course Title: Python programming</p>
-            <p>Course Code: CSC 419</p>
-            <p>Level: 200l</p>
-          </div>
-          <div class="card p-3" style="width: 380px">
-            <p>Course Title: Web development</p>
-            <p>Course Code: CSC 201</p>
-            <p>Level: 200l</p>
-          </div>
+                        ';
+                                    }
+                                   }
+                                   else {echo 'NO ASSIGNED COURSE YET';}
+                               
+                                    mysqli_stmt_close($stmt);
+                                    ?>  
+        
         </div>
       </section>
 
