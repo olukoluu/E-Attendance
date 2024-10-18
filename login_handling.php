@@ -37,7 +37,7 @@ include_once('connect.php');
             }else{
                 echo '<script>
                 alert("Login failed. invalid password");
-                window.location.href = "template/login.html";
+                window.location.href = "login.php";
             </script>';
             
             // header('Location: dashboard.php');
@@ -45,7 +45,7 @@ include_once('connect.php');
         }else{
             echo '<script>
             alert("Login failed. invalid password");
-            window.location.href = "template/login.html";
+            window.location.href = "login.php";
         </script>';
         }
     }

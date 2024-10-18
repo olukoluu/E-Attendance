@@ -1,7 +1,7 @@
 
 <aside class="side_nav position-sticky start-0 top-0 py-2 pt-4 text-center d-md-flex flex-column align-items-center border"
         style="height: 100vh; width: fit-content">
-        <a href="#" class="logo">
+        <a href="hoddashboard.php" class="logo">
             <img src="template/images/logo.png" class="icon" alt="" style="width: 40px" />
         </a>
         <ul class="nav flex-column mt-4 h-100">
@@ -13,20 +13,19 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="courses.php">
-                    <img src="template/images/courses.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
+                    <img src="template/images/courses.png" alt="courses" style="width: 25px; padding-top: 20px;" />
                     <p>Courses</p>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a href="lecturer.php" class="nav-link"><img src="template/images/classes.png" alt="profile"
-                        style="width: 25px; padding-top: 20px;" />
+                <a class="nav-link active" aria-current="page" href="lecturer.php">
+                    <img src="template/images/classes.png" alt="lecturers" style="width: 25px; padding-top: 20px;" />
                     <p>Lecturers</p>
-
                 </a>
             </li>
+
             <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> 
+                <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> 
                 <img src="template/images/report.png" alt="report" style="width: 25px; padding-top: 20px;"/>
                     <p>Sign out</p>
                       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -40,7 +39,7 @@
                                 <h4>Are you sure you want to sign out of your account?</h4>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sign Out</button>
+                              <a href="logout.php" class="btn btn-secondary">Sign Out</a>
                               <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Cancel!</button>
                             </div>
                           </div>

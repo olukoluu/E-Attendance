@@ -4,7 +4,7 @@ session_start();
 
 $last_name = $_SESSION['LName'];
 $verified = $_SESSION['verified'];
-$pfn= $_SESSION['pfnum'] ;
+$pfn = $_SESSION['pfnum'];
 
 if ($_SESSION['verified'] === true) {
 ?>
@@ -32,7 +32,7 @@ if ($_SESSION['verified'] === true) {
 
     <main class="p-md-4 pt-0 w-100">
       <div class="p-3 pt-md-0 d-flex justify-content-between align-items-center pb-2 border-bottom">
-        <h4 class="">Welcome back, <?php echo $last_name?></h4>
+        <h4 class="">Welcome back, <?php echo $last_name ?></h4>
         <i class="bi bi-list d-block d-md-none" id="menuBtn" style="font-size: 40px"></i>
       </div>
 
@@ -75,6 +75,24 @@ if ($_SESSION['verified'] === true) {
                                     <p>Course Code: '.$row["course_code"].'</p>
                                     <p>Level: '.$row["level"].'</p>
                                   </div>
+        <div class="row row-cols-md-3 gap-4 mt-4 px-4">
+          <?php
+          $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.level,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id WHERE lecturers.pfn = ? GROUP BY courses.id ORDER BY pfn DESC";
+
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("i", $pfn);
+          $stmt->execute();
+          $result = $stmt->get_result();
+
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_array()) {
+              echo '
+                                    <div class="card p-3" style="width: 32%">
+            <p>Course Title: ' . $row["course_title"] . '</p>
+            <p>Course Code: ' . $row["course_code"] . '</p>
+            <p>Level: ' . $row["level"] . '</p>
+            
+          </div>
                         ';
                                     }
                                   //  }
@@ -85,6 +103,14 @@ if ($_SESSION['verified'] === true) {
                                     mysqli_stmt_close($stmt);
                                     ?>  
         
+            }
+          } else {
+            echo '<p class=" text-center mt-2">NO ASSIGNED COURSE YET</p>';
+          }
+
+          mysqli_stmt_close($stmt);
+          ?>
+
         </div>
       </section>
 
@@ -107,6 +133,6 @@ if ($_SESSION['verified'] === true) {
 <?php
   mysqli_close($conn);
 } else {
-  header("Location: template/login.html");
+  header("Location: login.php");
 }
 ?>

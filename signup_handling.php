@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($errors) {
         $_SESSION['errors_signup'] = $errors;
-        header("Location: ../signup.php");
+        header("Location: signup.php");
         die();
     }
 
@@ -41,13 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "sssis", $fname, $lname, $email, $pfnum, $hashed_password);
 
-    // Execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
-        // Redirect to the login page
-        header("Location: template/login.html");
-        // Close the prepared statement
+        header("Location: login.php");
         mysqli_stmt_close($stmt);
-        exit;  // Stop further script execution after redirection
     } else {
         echo "Error executing the query: " . mysqli_error($conn);
     }
