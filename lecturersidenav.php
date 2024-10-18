@@ -33,7 +33,7 @@
                                 <h4>Are you sure you want to sign out of your account?</h4>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sign Out</button>
+                              <a href="logout.php" class="btn btn-secondary">Sign Out</a>
                               <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> Cancel!</button>
                             </div>
                           </div>

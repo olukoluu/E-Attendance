@@ -164,6 +164,6 @@ if ($_SESSION['verified'] === true) {
 <?php
     mysqli_close($conn);
 } else {
-    header("Location: template/login.html");
+    header("Location: login.php");
 }
 ?>
