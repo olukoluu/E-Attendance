@@ -1,5 +1,5 @@
 
-<aside class="side_nav d-none py-2 pt-4 text-center d-md-flex flex-column align-items-center border"
+<aside class="side_nav position-sticky start-0 top-0 py-2 pt-4 text-center d-md-flex flex-column align-items-center border"
         style="height: 100vh; width: fit-content">
         <a href="#" class="logo">
             <img src="template/images/logo.png" class="icon" alt="" style="width: 40px" />

@@ -66,21 +66,21 @@ if ($_SESSION['verified'] === true) {
                                     $stmt->bind_param("i", $pfn);
                                     $stmt->execute();
                                     
-        $count = mysqli_stmt_num_rows($stmt);
-        if ($count >= 1) {
                                     $result = $stmt->get_result();
+                                    // if($result = $stmt->get_result()){
                                          while ($row = $result->fetch_array()) {
                                         echo '
                                     <div class="card p-3" style="width: 380px">
-            <p>Course Title: '.$row["course_title"].'</p>
-            <p>Course Code: '.$row["course_code"].'</p>
-            <p>Level: '.$row["level"].'</p>
-            
-          </div>
+                                    <p>Course Title: '.$row["course_title"].'</p>
+                                    <p>Course Code: '.$row["course_code"].'</p>
+                                    <p>Level: '.$row["level"].'</p>
+                                  </div>
                         ';
                                     }
-                                   }
-                                   else {echo 'NO ASSIGNED COURSE YET';}
+                                  //  }
+                                  //  else {
+                                  //   echo 'NO ASSIGNED COURSE YET';
+                                  // }
                                
                                     mysqli_stmt_close($stmt);
                                     ?>  
