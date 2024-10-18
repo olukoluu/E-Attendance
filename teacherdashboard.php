@@ -58,23 +58,6 @@ if ($_SESSION['verified'] === true) {
       </section>
       <section class="mt-md-5 pt-5">
         <h5>Asssigned Courses</h5>
-        <div class="row row-cols-md-3 gap-4 justify-content-center mt-4">
-        <?php
-                                    $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.level,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id WHERE lecturers.pfn = ? GROUP BY courses.id ORDER BY pfn DESC";
-                                
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->bind_param("i", $pfn);
-                                    $stmt->execute();
-                                    
-                                    $result = $stmt->get_result();
-                                    // if($result = $stmt->get_result()){
-                                         while ($row = $result->fetch_array()) {
-                                        echo '
-                                    <div class="card p-3" style="width: 380px">
-                                    <p>Course Title: '.$row["course_title"].'</p>
-                                    <p>Course Code: '.$row["course_code"].'</p>
-                                    <p>Level: '.$row["level"].'</p>
-                                  </div>
         <div class="row row-cols-md-3 gap-4 mt-4 px-4">
           <?php
           $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.level,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id WHERE lecturers.pfn = ? GROUP BY courses.id ORDER BY pfn DESC";
@@ -87,21 +70,13 @@ if ($_SESSION['verified'] === true) {
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
               echo '
-                                    <div class="card p-3" style="width: 32%">
+             <div class="card p-3" style="width: 32%">
             <p>Course Title: ' . $row["course_title"] . '</p>
             <p>Course Code: ' . $row["course_code"] . '</p>
             <p>Level: ' . $row["level"] . '</p>
             
           </div>
                         ';
-                                    }
-                                  //  }
-                                  //  else {
-                                  //   echo 'NO ASSIGNED COURSE YET';
-                                  // }
-                               
-                                    mysqli_stmt_close($stmt);
-                                    ?>  
         
             }
           } else {

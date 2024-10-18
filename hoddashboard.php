@@ -1,5 +1,5 @@
 <?php
-ob_start();
+// ob_start();
 include_once('connect.php');
 session_start();
 
@@ -75,12 +75,12 @@ if ($_SESSION['verified'] === true) {
                                 <td>' . $row['course_code'] . '</td>
                                 <td>' . $row['course_title'] . '</td>
                                 <td>
-                                <form method="POST" action="' . htmlentities($_SERVER['PHP_SELF']) . '">
+                                <form method="POST" action="assigncourse.php">
                                 <input type="hidden" name="course_id" value="' . $row['id'] . '">
                                 <input type="hidden" name="course_title" value="' . $row['course_title'] . '">
                                     <input type="hidden" name="course_code" value="' . $row['course_code'] . '">
                                     <input type="hidden" name="course_level" value="' . $row['level'] . '">
-                                    <button name="manage" class="btn btn-success">Manage</button>
+                                    <button name="manage" type="submit" class="btn btn-success">Manage</button>
                                 </form>
                                 </td>
 
@@ -88,14 +88,16 @@ if ($_SESSION['verified'] === true) {
                                 $sn++;
                             }
 
-                            if (isset($_POST['manage'])) {
-                                $_SESSION['course_id'] = $_POST['course_id'];
-                                $_SESSION['course_title'] = $_POST['course_title'];
-                                $_SESSION['course_code'] = $_POST['course_code'];
-                                $_SESSION['course_level'] = $_POST['course_level'];
-                                header('Location: assigncourse.php');
-                                // echo $_POST['course_id'];
-                            }
+                            // print_r($_POST);
+
+                            // if (isset($_POST['submit'])) {
+                            //     $_SESSION['course_id'] = $_POST['course_id'];
+                            //     $_SESSION['course_title'] = $_POST['course_title'];
+                            //     $_SESSION['course_code'] = $_POST['course_code'];
+                            //     $_SESSION['course_level'] = $_POST['course_level'];
+                            //     // header('Location: assigncourse.php');
+                            //     // echo $_POST['course_id'];
+                            // }
                             ?>
 
                         </tbody>

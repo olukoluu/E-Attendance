@@ -3,10 +3,10 @@ ob_start();
 include_once('connect.php');
 session_start();
 
-$course_id = $_SESSION['course_id'];
-$course_title = $_SESSION['course_title'];
-$course_code = $_SESSION['course_code'];
-$course_level = $_SESSION['course_level'];
+$course_id = $_POST['course_id'];
+$course_title = $_POST['course_title'];
+$course_code = $_POST['course_code'];
+$course_level = $_POST['course_level'];
 $verified = $_SESSION['verified'];
 
 if ($_SESSION['verified'] === true) {
