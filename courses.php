@@ -2,9 +2,6 @@
 include_once('connect.php');
 session_start();
 
-$last_name = $_SESSION['LName'];
-$verified = $_SESSION['verified'];
-
 if ($_SESSION['verified'] === true) {
 ?>
   <!DOCTYPE html>

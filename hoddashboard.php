@@ -3,8 +3,6 @@
 include_once('connect.php');
 session_start();
 
-$verified = $_SESSION['verified'];
-
 if ($_SESSION['verified'] === true) {
 ?>
 

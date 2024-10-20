@@ -3,7 +3,6 @@ include_once('connect.php');
 session_start();
 
 $last_name = $_SESSION['LName'];
-$verified = $_SESSION['verified'];
 $pfn = $_SESSION['pfnum'];
 
 if ($_SESSION['verified'] === true) {

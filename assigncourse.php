@@ -7,7 +7,6 @@ $course_id = $_POST['course_id'];
 $course_title = $_POST['course_title'];
 $course_code = $_POST['course_code'];
 $course_level = $_POST['course_level'];
-$verified = $_SESSION['verified'];
 
 if ($_SESSION['verified'] === true) {
 ?>
@@ -82,21 +81,6 @@ if ($_SESSION['verified'] === true) {
                             <h1 style="font-size: 20px;">Course</h1>
                             <br>
                             <input type="text" name="course_code" value="<?php echo $course_code . ': ' . $course_title; ?>" readonly style="margin-bottom: 20px; border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
-                            <!-- <p>
-                                <select id="courses" onchange="myFunction()" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
-                                    <option value="" placeholder="Lecturers"> Select Courses</option>
-                                    <option value="CSC 113" data-level="100">CSC 113: INTRODUCTION TO COMPUTER SCIENCE</option>
-                                    <option value="csc 219" data-level="200">CSC 219: PYTHON PROGRAMMING </option>
-                                    <option value="CSC 305" data-level="300">CSC 305: WEB DEVELOPMENT</option>
-                                    <option value="CSC 225" data-level="200">CSC 225: DATA STRUCTURE</option>
-                                    <option value="CSC 217" data-level="200">CSC 217: OPERATING SYSTEMS </option>
-                                    <option value="CSC 322" data-level="300">CSC 322: NETWORKING</option>
-                                    <option value="CSC 411" data-level="400">CSC 411: INFORMATION SCIENCE</option>
-                                    <option value="STA 129" data-level="100">STA 129: INTRODUCTION TO STATISTICS </option>
-                                    <option value="CSC 429" data-level="400">CSC 429: HUMAN COMPUTER INTERACTION</option>
-                                    <option value="CSC 425" data-level="400">CSC 425: INTRODUCTION TO CYBERSECURITY</option>
-                                </select>
-                            </p> -->
                         </div>
                     </div>
                 </div>
@@ -111,8 +95,6 @@ if ($_SESSION['verified'] === true) {
                             <br>
                             <p id="demo" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
                                 <?php echo $course_level; ?>
-                                <!-- <input id="Level" type="Level" placeholder="Level" value= style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;"> -->
-
                             </p>
                         </div>
                     </div>

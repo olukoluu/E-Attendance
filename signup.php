@@ -24,6 +24,7 @@ include_once('signup_function.php');
                 </div>
                 <div class="input-box">
                     <input type="text" name="fname" class="input-field" placeholder="First Name" autocomplete="off">
+                    <?php echo $_SESSION['errors_signup'];?>
                     <input type="text" name="lname" class="input-field" placeholder="Last Name" autocomplete="off">
                     <input type="text" name="email" class="input-field" placeholder="Email Address" autocomplete="off">
                     <input type="text" name="pfnum" placeholder="PF Number" class="input-field" autocomplete="off">
@@ -32,7 +33,7 @@ include_once('signup_function.php');
                 </div>
 
                 <?php
-                check_signup_errors();
+                    unset($_SESSION['errors_signup']);
                 ?>
 
                 <a class="input-submit">
