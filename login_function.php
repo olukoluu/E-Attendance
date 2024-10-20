@@ -30,25 +30,26 @@ function does_pfn_exist($conn, $pfn)
     }
 }
 
-//query the db to get pwd
-function get_pwd($conn, $pfn, $pwd)
-{
-    $sql = "SELECT * FROM lecturers WHERE pfn LIKE '$pfn%'";
-        $stmt = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row( $stmt );
-        $hashed_password = $row['pwd'];
-        $verify = password_verify($pwd,$hashed_password);
-        // $count = mysqli_num_rows( $stmt );
-        return $verify;
-}
+// //query the db to get pwd
+// function get_pwd($conn, $pfn, $pwd)
+// {
+//     $sql = "SELECT * FROM lecturers WHERE pfn LIKE '$pfn%'";
+//         $stmt = mysqli_query($conn,$sql);
+//         $row = mysqli_fetch_row( $stmt );
+//         $hashed_password = $row['pwd'];
+//         if(password_verify($pwd,$hashed_password)){
+//         return $row;
+//         }
+//         // $count = mysqli_num_rows( $stmt );
+// }
 
-function is_pwd_invalid($conn, $pfn, $pwd)
-{
-    if(!empty($pwd)){
-        if (!get_pwd($conn, $pfn, $pwd)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
+// function is_pwd_invalid($conn, $pfn, $pwd)
+// {
+//     if(!empty($pwd)){
+//         if (!get_pwd($conn, $pfn, $pwd)) {
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     }
+// }

@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (mysqli_stmt_execute($stmt)) {
         header("Location: login.php");
         mysqli_stmt_close($stmt);
+        die();
     } else {
         echo "Error executing the query: " . mysqli_error($conn);
     }

@@ -18,13 +18,26 @@ if ($_SESSION['verified'] === true) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <title>Document</title>
     </head>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        /* input[type=number] {
+            -moz-appearance: textfield;
+        } */
+    </style>
 
     <body class="d-flex position-relative">
 
-    <?php
-    include_once "lecturersidenav.php";
+        <?php
+        include_once "lecturersidenav.php";
 
-    ?>
+        ?>
 
 
         <div class="container">
@@ -32,12 +45,16 @@ if ($_SESSION['verified'] === true) {
             <div class="container" style="width: 100%; margin-top: 40px;">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h2 style="font-size: 40px;">Attendance</h2>
-                            </div>
-
+                        <div class="row justify-content-between align-items-center">
+                            <h2 class="col-sm-6" style="font-size: 40px;">Attendance</h2>
+                            <!-- <form class="col-sm-4" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+                                <div class="input-group">
+                                    <input type="number" name="matric_no" id="matric_no" class="form-control border-secondary">
+                                    <button class="btn btn-outline-success">Search</button>
+                                </div>
+                            </form> -->
                         </div>
+                        <h4 class=""><?php echo $_GET['course_code']; ?></h4>
                     </div>
                 </div>
 
@@ -58,19 +75,19 @@ if ($_SESSION['verified'] === true) {
                     </thead>
                     <tbody>
 
-                    <?php
-                            $sql = "SELECT * FROM students_bio_data";
-                            $stmt = mysqli_query($conn, $sql);
+                        <?php
+                        $sql = "SELECT * FROM students_bio_data";
+                        $stmt = mysqli_query($conn, $sql);
 
-                            $sn = 1;
-                            while ($row = mysqli_fetch_array($stmt)) {
-                                echo '
+                        $sn = 1;
+                        while ($row = mysqli_fetch_array($stmt)) {
+                            echo '
                         <tr>
-                            <td>'.$sn.'</td>
-                            <td>'.$row['first_name'].'</td>
-                            <td>'.$row['last_name'].'</td>
-                            <td>'.$row['matric_number'].'</td>
-                            <td>'.$row['email'].'</td>
+                            <td>' . $sn . '</td>
+                            <td>' . $row['first_name'] . '</td>
+                            <td>' . $row['last_name'] . '</td>
+                            <td>' . $row['matric_number'] . '</td>
+                            <td>' . $row['email'] . '</td>
                             <td>
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -80,10 +97,10 @@ if ($_SESSION['verified'] === true) {
                             </td>
                         </tr>
                            ';
-                                $sn++;
-                            }
-                           
-                            ?>
+                            $sn++;
+                        }
+
+                        ?>
                     </tbody>
                 </table>
             </div>

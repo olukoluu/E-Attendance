@@ -51,10 +51,11 @@ CREATE TABLE lecturer_course(
 CREATE TABLE `students_bio_data` (
   `First_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `matric_number` int(11) DEFAULT NULL,
+  `matric_number` int(11) DEFAULT NULL PRIMARY KEY,
   `Email` varchar(100) NOT NULL,
   	time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
 );
+
 
 
 
@@ -74,3 +75,11 @@ INSERT INTO `students_bio_data` (`First_name`, `last_name`, `matric_number`, `Em
 ('Seun', 'Lastname', 2024009, 'seun@gmail.com'),
 ('Precious', 'Lastname', 2024010, 'precious@gmail.com');
 
+CREATE TABLE attendance (
+    attendance_id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    student_id INT(11),
+    course_id INT(11),
+  	FOREIGN KEY (student_id) REFERENCES students_bio_data(matric_number) ON DELETE SET NULL, 
+  	FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE SET NULL, 
+  	time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);

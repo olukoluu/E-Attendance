@@ -22,7 +22,7 @@ if ($_SESSION['verified'] === true) {
     <title>Document</title>
   </head>
 
-  <body class="d-flex position-relative">
+  <body class="d-flex">
 
 
     <?php
