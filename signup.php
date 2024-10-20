@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once('signup_function.php');
+
+$errors = $_SESSION['errors_signup'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,16 @@ include_once('signup_function.php');
                 </div>
                 <div class="input-box">
                     <input type="text" name="fname" class="input-field" placeholder="First Name" autocomplete="off">
-                    <?php echo $_SESSION['errors_signup'];?>
                     <input type="text" name="lname" class="input-field" placeholder="Last Name" autocomplete="off">
                     <input type="text" name="email" class="input-field" placeholder="Email Address" autocomplete="off">
+                    <span style="color: red; margin-bottom: 10px;"><?php echo $errors["email_invalid"] ; ?></span>
+                    <span style="color: red; margin-bottom: 10px;"><?php echo $errors["email_taken"]; ?></span>
                     <input type="text" name="pfnum" placeholder="PF Number" class="input-field" autocomplete="off">
+                    <span style="color: red; margin-bottom: 10px;"><?php echo $errors["pfn_taken"]; ?></span>
                     <input type="password" name="pass" class="input-field" placeholder="Password" autocomplete="off">
                     <input type="password" name="cpass" class="input-field" placeholder="Confirm Password" autocomplete="off">
+                    <span style="color: red; margin-bottom: 10px;"><?php echo $errors["password_different"]; ?></span>
+                    <span style="color: red; margin-bottom: 10px;"><?php echo $errors["input_empty"]; ?></span>
                 </div>
 
                 <?php

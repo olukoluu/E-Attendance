@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 include_once('connect.php');
+include_once('login_function.php');
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
     
@@ -8,6 +10,24 @@ include_once('connect.php');
         $pfnum = $_POST[ 'pfnum' ];
         $pass = $_POST[ 'pass' ];
         $verified = false;
+
+        $errors = [];
+
+        if (is_input_empty($pfnum, $pass)) {
+            $errors["input_empty"] = "Fill all fields!";
+        }
+        if (does_pfn_exist($conn, $pfnum)) {
+            $errors["pfn_exist"] = "Pfn doesnot exist!";
+        }
+        if (is_pwd_invalid($conn, $pfnum, $pass)) {
+            $errors["pwd_invalid"] = "Incorrect Password!";
+        }
+    
+        if ($errors) {
+            $_SESSION['errors_login'] = $errors;
+            header("Location: login.php");
+            die();
+        }
         
         $sql = "SELECT * FROM lecturers WHERE pfn LIKE '$pfnum%'";
         $stmt = mysqli_query($conn,$sql);
@@ -34,19 +54,7 @@ include_once('connect.php');
                 }
 
                 exit();                
-            }else{
-                echo '<script>
-                alert("Login failed. invalid password");
-                window.location.href = "login.php";
-            </script>';
-            
-            // header('Location: dashboard.php');
             }
-        }else{
-            echo '<script>
-            alert("Login failed. invalid password");
-            window.location.href = "login.php";
-        </script>';
         }
     }
 

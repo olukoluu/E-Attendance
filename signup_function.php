@@ -32,7 +32,7 @@ function is_email_invalid($email)
 //query the db to get email
 function get_email($conn, $email)
 {
-    $sql = "SELECT * FROM lecturers WHERE pfn LIKE '$email%'";
+    $sql = "SELECT * FROM lecturers WHERE email LIKE '$email%'";
         $stmt = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc( $stmt );
         // $count = mysqli_num_rows( $stmt );

@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$errors = $_SESSION['errors_login'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +21,15 @@
                     <header style="color: white;">Login</header>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="PF Number" autocomplete="off" name="pfnum" required>
+                    <input type="text" class="input-field" placeholder="PF Number" autocomplete="off" name="pfnum">
                 </div>
+                <p style="color: red;"><?php echo $errors["pfn_exist"]; ?></p>
                 <div class="input-box">
-              
-                    <input type="password" class="input-field" placeholder="Password" autocomplete="off" name="pass" required>
+                    <input type="password" class="input-field" placeholder="Password" autocomplete="off" name="pass">
                 </div>
-                <div class="forgot">
+                <p style="color: red;"><?php echo $errors["pwd_invalid"]; ?></p>
+                <p style="color: red;"><?php echo $errors["input_empty"]; ?></p>
+                <!-- <div class="forgot">
                     <section>
                         <input type="checkbox" id="check">
                         <label for="check">Remember me</label>
@@ -30,7 +37,7 @@
                     <section>
                         <a href="#">Forgot password</a>
                     </section>
-                </div>
+                </div> -->
                 <a class="input-submit">
                     <button class="submit-btn" type="submit" id="submit"></button>
                     <label for-="submit">Sign In</label>
@@ -42,5 +49,6 @@
             </div>
         </div>
     </form>
+    <?php unset($_SESSION['errors_login']); ?>
 </body>
 </html>
