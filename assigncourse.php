@@ -43,67 +43,38 @@ if ($_SESSION['verified'] === true) {
             <br>
             <br>
 
-            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+            <form class="" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+                <div class=" d-flex flex-column gap-4 px-4 pb-4 mb-5" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin: 20px 0;">
+                    <label class="form-label fs-4" for="lecturer_id">Lecturer</label>
+                    <select name="lecturer_id" id="lecturer_id" style="border: none; border-bottom: solid 2px gray; background-color: transparent; width: 100%;">
+                        <option value=""> Select Lecturer</option>
+                        <?php
+                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name , lecturers.pfn FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id AND lecturer_course.course_id = ? WHERE lecturer_course.lecturer_id IS NULL AND lecturers.is_hod = 0;";
 
-                <div class="col-md-sm-12" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
-                    <div class="row">
-                        <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
-                            <h1 style="font-size: 20px;">Lecturers</h1>
-                            <br>
-                            <p>
-                                <select name="lecturer_id" id="lecturer_id" style="border: none; border-bottom: solid 2px gray; background-color: transparent; width: 100%;">
-                                    <option value=""> Select Lecturer</option>
-                                    <?php
-                                    $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name , lecturers.pfn FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id AND lecturer_course.course_id = ? WHERE lecturer_course.lecturer_id IS NULL AND lecturers.is_hod = 0;";
-                                
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->bind_param("i", $course_id);
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    while ($row = $result->fetch_array()) {
-                                        echo '
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $course_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($row = $result->fetch_array()) {
+                            echo '
                                     <option value="' . $row['id'] . '">' . $row['last_name'] . ' ' . $row['first_name'] . '</option>
                         ';
-                                    }
-                                    mysqli_stmt_close($stmt);
-                                    ?>
-                                </select>
-                            </p>
-                        </div>
-                    </div>
+                        }
+                        mysqli_stmt_close($stmt);
+                        ?>
+                    </select>
                 </div>
-                <br>
-                <br>
-
-                <div class="col-md-sm-12" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
-                    <div class="row">
-                        <div class="col-md-sm-12 " style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
-                            <h1 style="font-size: 20px;">Course</h1>
-                            <br>
-                            <input type="text" name="course_code" value="<?php echo $course_code . ': ' . $course_title; ?>" readonly style="margin-bottom: 20px; border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-
-
-                <div class="col-md-sm-12" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
-                    <div class="row">
-                        <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
-                            <h1 style="font-size: 20px;">Level</h1>
-                            <br>
-                            <p id="demo" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
-                                <?php echo $course_level; ?>
-                            </p>
-                        </div>
-                    </div>
+                <div class=" d-flex flex-column gap-4 px-4 pb-4 mb-5" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin: 20px 0;">
+                    <label class="form-label fs-4" for="course_code">Course</label>
+                    <input type="text" name="course_code" value="<?php echo $course_code . ': ' . $course_title; ?>" readonly style=" border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
                 </div>
 
-                <br>
-                <br>
+                <div class=" d-flex flex-column gap-4 px-4 pb-4 mb-5" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin: 20px 0;">
+                    <label for="level" class="fs-4">Level</label>
+                    <input type="text" name="level" id="level" value="<?php echo $course_level; ?>" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;"></input>
+                </div>
 
-                <button type="submit" name="assign" class="btn btn-success" style="margin-bottom: 30px; justify-self: center;">Assign</button>
+                <button type="submit" name="assign" class="btn btn-success px-3" style=" justify-self: center;">Assign</button>
             </form>
         </div>
         <?php
@@ -111,14 +82,13 @@ if ($_SESSION['verified'] === true) {
         if (isset($_POST['assign'])) {
 
             $sql = "INSERT INTO lecturer_course (lecturer_id, course_id) VALUES (?,?)";
-            
+
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ii", $_POST['lecturer_id'],$course_id, );
-            if($stmt->execute()){
+            $stmt->bind_param("ii", $_POST['lecturer_id'], $course_id,);
+            if ($stmt->execute()) {
                 header('Location: hoddashboard.php');
                 die();
             }
-
         }
         ?>
 

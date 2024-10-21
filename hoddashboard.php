@@ -37,18 +37,7 @@ if ($_SESSION['verified'] === true) {
             <div class="container">
 
                 <div class="container" style="width: 100%; margin-top: 20px;">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="row">
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <br>
-                    <br>
+                    
 
 
                     <table class="table">
