@@ -50,7 +50,6 @@ if ($_SESSION['verified'] === true) {
                         <option value=""> Select Lecturer</option>
                         <?php
                         $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name , lecturers.pfn FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id AND lecturer_course.course_id = ? WHERE lecturer_course.lecturer_id IS NULL AND lecturers.is_hod = 0;";
-
                         $stmt = $conn->prepare($sql);
                         $stmt->bind_param("i", $course_id);
                         $stmt->execute();
@@ -73,6 +72,7 @@ if ($_SESSION['verified'] === true) {
                     <label for="level" class="fs-4">Level</label>
                     <input type="text" name="level" id="level" value="<?php echo $course_level; ?>" style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;"></input>
                 </div>
+                <input type="hidden" name="course_id" value="<?php echo $course_id; ?>">
 
                 <button type="submit" name="assign" class="btn btn-success px-3" style=" justify-self: center;">Assign</button>
             </form>
@@ -84,7 +84,7 @@ if ($_SESSION['verified'] === true) {
             $sql = "INSERT INTO lecturer_course (lecturer_id, course_id) VALUES (?,?)";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ii", $_POST['lecturer_id'], $course_id,);
+            $stmt->bind_param("ii", $_POST['lecturer_id'], $_POST['course_id'],);
             if ($stmt->execute()) {
                 header('Location: hoddashboard.php');
                 die();

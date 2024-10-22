@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$errors = $_SESSION['errors_login'];
+$errors = isset($_SESSION['errors_login']) && $_SESSION['errors_login'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,12 +24,12 @@ $errors = $_SESSION['errors_login'];
                 <div class="input-box">
                     <input type="text" class="input-field" placeholder="PF Number" autocomplete="off" name="pfnum">
                 </div>
-                <p style="color: red;"><?php echo $errors["pfn_exist"]; ?></p>
+                <p style="color: red;"><?php  if(isset($errors["pfn_exist"])) { echo $errors["pfn_exist"]; }  ?></p>
                 <div class="input-box">
                     <input type="password" class="input-field" placeholder="Password" autocomplete="off" name="pass">
                 </div>
-                <p style="color: red;"><?php echo $errors["pwd_invalid"]; ?></p>
-                <p style="color: red;"><?php echo $errors["input_empty"]; ?></p>
+                <p style="color: red;"><?php if(isset($errors["pwd_invalid"])) { echo $errors["pwd_invalid"]; } ?></p>
+                <p style="color: red;"><?php if(isset($errors["input_empty"])) { echo $errors["input_empty"]; } ?></p>
                 <!-- <div class="forgot">
                     <section>
                         <input type="checkbox" id="check">

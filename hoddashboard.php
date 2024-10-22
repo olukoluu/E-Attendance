@@ -67,7 +67,7 @@ if ($_SESSION['verified'] === true) {
                                 <input type="hidden" name="course_title" value="' . $row['course_title'] . '">
                                     <input type="hidden" name="course_code" value="' . $row['course_code'] . '">
                                     <input type="hidden" name="course_level" value="' . $row['level'] . '">
-                                    <button name="manage" type="submit" class="btn btn-success">Manage</button>
+                                    <button type="submit" class="btn btn-success">Manage</button>
                                 </form>
                                 </td>
 
@@ -75,16 +75,6 @@ if ($_SESSION['verified'] === true) {
                                 $sn++;
                             }
 
-                            // print_r($_POST);
-
-                            // if (isset($_POST['submit'])) {
-                            //     $_SESSION['course_id'] = $_POST['course_id'];
-                            //     $_SESSION['course_title'] = $_POST['course_title'];
-                            //     $_SESSION['course_code'] = $_POST['course_code'];
-                            //     $_SESSION['course_level'] = $_POST['course_level'];
-                            //     // header('Location: assigncourse.php');
-                            //     // echo $_POST['course_id'];
-                            // }
                             ?>
 
                         </tbody>
