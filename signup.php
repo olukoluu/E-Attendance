@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$errors = isset($_SESSION['errors_signup']) && $_SESSION['errors_signup'];
+$errors = isset($_SESSION['errors_signup']) ? $_SESSION['errors_signup'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
