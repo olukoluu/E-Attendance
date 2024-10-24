@@ -41,8 +41,7 @@ $errors = isset($_SESSION['errors_login']) ? $_SESSION['errors_login'] : [];
                     </section>
                 </div> -->
                 <a class="input-submit">
-                    <button class="submit-btn" type="submit" id="submit"></button>
-                    <label for-="submit">Sign In</label>
+                    <button class="submit-btn text-white" type="submit" id="submit">Log In</button>
                 </a>
                 </div>
                     <div class="sign-up-link">

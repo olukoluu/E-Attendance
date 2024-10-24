@@ -42,8 +42,7 @@ $errors = isset($_SESSION['errors_signup']) ? $_SESSION['errors_signup'] : '';
                 ?>
 
                 <a class="input-submit">
-                    <button class="submit-btn" type="submit" id="submit"></button>
-                    <label for="submit">SIGN UP</label>
+                    <button class="submit-btn text-light" type="submit" id="submit">Sign Up</button>
                 </a>
                 <div class="login-link">
                     <p>Already have an account? <a href="login.php">Login</a></p>

@@ -57,12 +57,14 @@ if ($_SESSION['verified'] === true) {
                             <th>First Name</th>
                             <th>Last name</th>
                             <th>Email</th>
+                            <th>PFNumber</th>
                             <th>Courses</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name, lecturers.email, GROUP_CONCAT(courses.course_code ORDER BY courses.course_code) AS courses FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id LEFT JOIN courses ON lecturer_course.course_id = courses.id WHERE lecturers.is_hod = 0 GROUP BY lecturers.id ORDER BY courses DESC";
+                        $sql = "SELECT lecturers.id, lecturers.first_name, lecturers.last_name, lecturers.email, lecturers.pfn, GROUP_CONCAT(courses.course_code ORDER BY courses.course_code) AS courses FROM lecturers LEFT JOIN lecturer_course ON lecturers.id = lecturer_course.lecturer_id LEFT JOIN courses ON lecturer_course.course_id = courses.id WHERE lecturers.is_hod = 0 GROUP BY lecturers.id ORDER BY courses DESC";
                         $stmt = mysqli_query($conn, $sql);
                         $sn = 1;
 
@@ -74,7 +76,15 @@ if ($_SESSION['verified'] === true) {
                             <td>' . $row['first_name'] . '</td>
                             <td>' . $row['last_name'] . '</td>
                             <td>' . $row['email'] . '</td>
+                            <td>' . $row['pfn'] . '</td>
                             <td>' . $courses . '</td>
+                            <td>
+                            <form method="POST" action="deletecourse.php">
+                            <input type="hidden" name="lecturer_id" value="'. $row['id'] .'">
+                            <input type="hidden" name="lecturer_name" value="'. $row['last_name'] .' '.$row['first_name'].' ">
+                                <button type="submit" class="btn btn-success">Manage</button>
+                            </form>
+                            </td>
                         </tr>
                         ';
                             $sn++;
