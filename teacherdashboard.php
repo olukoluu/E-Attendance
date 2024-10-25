@@ -37,18 +37,18 @@ if ($_SESSION['verified'] === true) {
 
       <section class="mt-md-4 mb-5 pt-3 pb-5">
         <h5>Upcoming Classes</h5>
-        <div class="row row-cols-md-3 gap-4 justify-content-center mt-4">
-          <div class="card p-3" style="width: 380px">
+        <div class="row row-cols-md-3 gap-4 mt-4 px-4">
+          <div class="card p-3" style="width: 31%">
             <h6 class="fw-bold">CSC 201</h6>
             <p>Date: Jan 12, 2025</p>
             <p>Time: 12:00pm - 2:00pm</p>
           </div>
-          <div class="card p-3" style="width: 380px">
+          <div class="card p-3" style="width: 31%">
             <h6 class="fw-bold">CSC 419</h6>
             <p>Date: Jan 15, 2025</p>
             <p>Time: 8:00am - 10:00am</p>
           </div>
-          <div class="card p-3" style="width: 380px">
+          <div class="card p-3" style="width: 31%">
             <h6 class="fw-bold">CSC 112</h6>
             <p>Date: Jan 16, 2025</p>
             <p>Time: 10:00am - 12:00pm</p>
@@ -69,7 +69,7 @@ if ($_SESSION['verified'] === true) {
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
               echo '
-             <div class="card p-3" style="width: 32%">
+             <div class="card p-3" style="width: 31%">
             <p>Course Title: ' . $row["course_title"] . '</p>
             <p>Course Code: ' . $row["course_code"] . '</p>
             <p>Level: ' . $row["level"] . '</p>
