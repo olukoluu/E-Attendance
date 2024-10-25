@@ -23,7 +23,7 @@ if ($_SESSION['verified'] === true) {
         <?php include_once('lecturersidenav.php'); ?>
         <section class="p-4 w-100">
             <h3>Select A Course</h3>
-            <div class="row row-cols-md-3 mt-4 px-4">
+            <div class="row row-cols-md-3 row-gap-4 mt-4 px-4">
                 <?php
                 $sql = "SELECT courses.id AS course_id, courses.course_code, courses.course_title, courses.level,GROUP_CONCAT(lecturers.pfn ORDER BY lecturers.pfn) AS pfn FROM courses LEFT JOIN lecturer_course ON courses.id = lecturer_course.course_id LEFT JOIN lecturers ON lecturer_course.lecturer_id = lecturers.id WHERE lecturers.pfn = ? GROUP BY courses.id ORDER BY pfn DESC";
 
