@@ -76,11 +76,14 @@ if ($_SESSION['verified'] === true) {
                     <tbody>
 
                         <?php
-                        $sql = "SELECT * FROM students_bio_data";
-                        $stmt = mysqli_query($conn, $sql);
+                        $sql = "SELECT * FROM students_bio_data WHERE level = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param('i', $_GET['level']);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
 
                         $sn = 1;
-                        while ($row = mysqli_fetch_array($stmt)) {
+                        while ($row = $result->fetch_array()) {
                             echo '
                         <tr>
                             <td>' . $sn . '</td>

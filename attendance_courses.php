@@ -37,6 +37,7 @@ if ($_SESSION['verified'] === true) {
                         echo '
               <form action="attendance.php">
               <input type="hidden" name="course_code" value="' . $row["course_code"] . '">
+              <input type="hidden" name="level" value="' . $row["level"] . '">
                 <button class="card p-3" style="width: 100%">
                     <p>Course Title: ' . $row["course_title"] . '</p>
                     <p>Course Code: ' . $row["course_code"] . '</p>
