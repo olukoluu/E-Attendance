@@ -63,6 +63,7 @@ if ($_SESSION['verified'] === true) {
                 <div class=" d-flex flex-column gap-4 px-4 pb-4 mb-5" style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin: 20px 0;">
                     <label class="form-label fs-4" for="course_code">Lecturer</label>
                     <input type="text" name="lecturer_name" value="<?php echo $lecturer_name; ?>" readonly style=" border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
+                    <input type="hidden" name="lecturer_id" value="<?php echo $lecturer_id; ?>">
                 </div>
 
                 <button type="submit" name="delete" class="btn btn-success px-3" style=" justify-self: center;">Delete</button>
@@ -72,10 +73,10 @@ if ($_SESSION['verified'] === true) {
 
         if (isset($_POST['delete'])) {
 
-            $sql = "DELETE FROM lecturer_course WHERE course_id = ?";
+            $sql = "DELETE FROM lecturer_course WHERE course_id = ? AND lecturer_id = ?";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $_POST['course'],);
+            $stmt->bind_param("ii", $_POST['course'], $_POST['lecturer_id']);
             if ($stmt->execute()) {
                 header('Location: lecturer.php');
                 die();

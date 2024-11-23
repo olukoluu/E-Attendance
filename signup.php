@@ -9,7 +9,7 @@ $errors = isset($_SESSION['errors_signup']) ? $_SESSION['errors_signup'] : '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGN UP</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="template/styles/signup.css" />
     <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
     <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
@@ -27,14 +27,15 @@ $errors = isset($_SESSION['errors_signup']) ? $_SESSION['errors_signup'] : '';
                     <input type="text" name="fname" class="input-field" placeholder="First Name" autocomplete="off">
                     <input type="text" name="lname" class="input-field" placeholder="Last Name" autocomplete="off">
                     <input type="text" name="email" class="input-field" placeholder="Email Address" autocomplete="off">
-                    <span style="color: red; margin-bottom: 10px;"><?php if(isset($errors["email_invalid"])) { echo $errors["email_invalid"]; } ?></span>
-                    <span style="color: red; margin-bottom: 10px;"><?php if(isset($errors["email_taken"])) { echo $errors["email_taken"]; } ?></span>
+                    <?php  if(isset($errors["email_invalid"])) { echo '<p style="color: red;">'.$errors["email_invalid"].'</p>'; }  ?>
+                    <?php  if(isset($errors["email_taken"])) { echo '<p style="color: red;">'.$errors["email_taken"].'</p>'; }  ?>
                     <input type="text" name="pfnum" placeholder="PF Number" class="input-field" autocomplete="off">
-                    <span style="color: red; margin-bottom: 10px;"><?php if(isset($errors["pfn_taken"])) { echo $errors["pfn_taken"]; } ?></span>
+                    <?php  if(isset($errors["pfn_taken"])) { echo '<p style="color: red;">'.$errors["pfn_taken"].'</p>'; }  ?>
                     <input type="password" name="pass" class="input-field" placeholder="Password" autocomplete="off">
                     <input type="password" name="cpass" class="input-field" placeholder="Confirm Password" autocomplete="off">
-                    <span style="color: red; margin-bottom: 10px;"><?php if(isset($errors["password_different"])) { echo $errors["password_different"]; } ?></span>
-                    <span style="color: red; margin-bottom: 10px;"><?php if(isset($errors["input_empty"])) { echo $errors["input_empty"]; } ?></span>
+                    <?php  if(isset($errors["password_different"])) { echo '<p style="color: red;">'.$errors["password_different"].'</p>'; }  ?>
+                    <?php  if(isset($errors["input_empty"])) { echo '<p style="color: red;">'.$errors["input_empty"].'</p>'; }  ?>
+
                 </div>
 
                 <?php

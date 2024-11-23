@@ -13,7 +13,7 @@ $errors = isset($_SESSION['errors_login']) ? $_SESSION['errors_login'] : [];
     <link rel="stylesheet" href="template/styles/login.css" />
     <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
     <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
-    <title>Lecturer log in page</title>
+    <title>Login</title>
 </head>
 <body>
     <form action="login_handling.php" method="POST">

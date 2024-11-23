@@ -11,8 +11,14 @@
     </li>
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="attendance_courses.php">
-        <img src="template/images/attendance.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
+        <img src="template/images/attendance.png" alt="attendance" style="width: 25px; padding-top: 20px;" />
         <p>Attendance</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="report_courses.php">
+        <img src="template/images/report.png" alt="report" style="width: 25px; padding-top: 20px;" />
+        <p>Report</p>
       </a>
     </li>
 

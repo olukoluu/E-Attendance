@@ -19,7 +19,7 @@ if ($_SESSION['verified'] === true) {
     <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
     <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <title>Document</title>
+    <title>Lecturer Dashboard</title>
   </head>
 
   <body class="d-flex">
@@ -35,27 +35,7 @@ if ($_SESSION['verified'] === true) {
         <i class="bi bi-list d-block d-md-none" id="menuBtn" style="font-size: 40px"></i>
       </div>
 
-      <section class="mt-md-4 mb-5 pt-3 pb-5">
-        <h5>Upcoming Classes</h5>
-        <div class="row row-cols-md-3 gap-4 mt-4 px-4">
-          <div class="card p-3" style="width: 31%">
-            <h6 class="fw-bold">CSC 201</h6>
-            <p>Date: Jan 12, 2025</p>
-            <p>Time: 12:00pm - 2:00pm</p>
-          </div>
-          <div class="card p-3" style="width: 31%">
-            <h6 class="fw-bold">CSC 419</h6>
-            <p>Date: Jan 15, 2025</p>
-            <p>Time: 8:00am - 10:00am</p>
-          </div>
-          <div class="card p-3" style="width: 31%">
-            <h6 class="fw-bold">CSC 112</h6>
-            <p>Date: Jan 16, 2025</p>
-            <p>Time: 10:00am - 12:00pm</p>
-          </div>
-        </div>
-      </section>
-      <section class="mt-md-5 pt-5">
+      <section class="mt-md-5">
         <h5>Asssigned Courses</h5>
         <div class="row row-cols-md-3 gap-4 mt-4 px-4">
           <?php
