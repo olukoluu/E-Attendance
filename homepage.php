@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-attendance</title>
-    <link rel="stylesheet" href="styles/homepage.css" />
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
-    <script defer src="boostrap/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="template/styles/homepage.css" />
+    <link rel="stylesheet" href="template/boostrap/css/bootstrap.min.css" />
+    <script defer src="template/boostrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light" style="padding-top: 30px;">
@@ -13,7 +14,7 @@
           <div class="w-100 d-flex justify-content-between">
             <h5>
               <a class="navbar-brand"></a>
-                <img src="images/logo.png" alt="logo" width="50px">
+                <img src="template/images/logo.png" alt="logo" width="50px">
               </a>
               <div style="display: inline; padding-left: 20px;">
                 <b>E-Attendance</b>
@@ -21,8 +22,8 @@
             </h5>
 
             <div class="">
-                <a href="../signup.php" class="btn btn-success">Sign up</a>
-                <a href="login.html" class="btn btn-success">Log in</a>
+                <a href="signup.php" class="btn btn-success">Sign up</a>
+                <a href="login.php" class="btn btn-success">Log in</a>
             </div>
           </div>
           

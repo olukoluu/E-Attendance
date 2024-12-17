@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <script defer src="boostrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <title>Assign Courses</title>
+</head>
+
+
+
+<body class="d-flex position-relative">
+
+    <aside class="side_nav d-none py-2 pt-4 text-center d-md-flex flex-column align-items-center border"
+        style="height: 100vh; width: fit-content">
+        <a href="#" class="logo">
+            <img src="images/logo.png" class="icon" alt="" style="width: 40px" />
+        </a>
+        <ul class="nav flex-column mt-4 h-100">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="hoddashboard.html">
+                    <img src="images/dashboard.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="courses.html">
+                    <img src="images/courses.png" alt="dashboard" style="width: 25px; padding-top: 20px;" />
+                    <p>Courses</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="lecturer.html" class="nav-link"><img src="images/classes.png" alt="profile"
+                        style="width: 25px; padding-top: 20px;" />
+                    <p>Lecturers</p>
+
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><img src="images/report.png" alt="report"
+                        style="width: 25px; padding-top: 20px;" />
+                    <p>Sign out</p>
+                </a>
+            </li>
+
+        </ul>
+    </aside>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body>
+        <br>
+        <br>
+        <div class="container"
+            style="background-color: #DBFFDB; width: 65%; height: 700px; margin-top: 30px; padding: 30px; height: fit-content;">
+
+            <head>
+                <h1 style="font-size: 30px; margin-bottom: -40px;">Assign Courses</h1>
+            </head>
+            <br>
+            <br>
+
+            <div class="col-md-sm-12"
+                style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
+                        <h1 style="font-size: 20px;">Lecturers</h1>
+                        <br>
+                        <p>
+                            <select name="PF NUMBER" id="PF NUMBER"
+                                style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
+                                <option value="" placeholder="Lecturers"> Select Lecturer</option>
+                                <option value="PF 4091">DR. FADEKPE SAMUEL</option>
+                                <option value="PF 7891">MRS. AMISU DEBORAH</option>
+                                <option value="PF 6723">MR. TOLU OLAKUNLE</option>
+                                <option value="PF 8910">MR. OBEKI GABRIEL</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- <input type="Lecturer" placeholder="PF Number"
+            style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;"> -->
+
+            <div class="col-md-sm-12"
+                style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
+                        <h1 style="font-size: 20px;">Course</h1>
+                        <br>
+                        <p>
+                            <select id="courses" onchange="myFunction()"
+                                style="border: none; border-bottom:  solid 2px gray; background-color: transparent; width: 100%;">
+                                <option value="" placeholder="Lecturers"> Select Courses</option>
+                                <option value="CSC 113" data-level="100">CSC 113: INTRODUCTION TO COMPUTER SCIENCE</option>
+                                <option value="csc 219" data-level="200">CSC 219: PYTHON PROGRAMMING </option>
+                                <option value="CSC 305" data-level="300">CSC 305: WEB DEVELOPMENT</option>
+                                <option value="CSC 225" data-level="200">CSC 225: DATA STRUCTURE</option>
+                                <option value="CSC 217" data-level="200">CSC 217: OPERATING SYSTEMS </option>
+                                <option value="CSC 322" data-level="300">CSC 322: NETWORKING</option>
+                                <option value="CSC 411" data-level="400">CSC 411: INFORMATION SCIENCE</option>
+                                <option value="STA 129" data-level="100">STA 129: INTRODUCTION TO STATISTICS </option>
+                                <option value="CSC 429" data-level="400">CSC 429: HUMAN COMPUTER INTERACTION</option>
+                                <option value="CSC 425" data-level="400">CSC 425: INTRODUCTION TO CYBERSECURITY</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+
+            <div class="col-md-sm-12"
+                style="border: gray solid 2px; border-radius: 1px; height: fit-content; margin-top: 20px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-sm-12" style="padding-left: 30px; padding-top: 5px; padding-right: 30px;">
+                        <h1 style="font-size: 20px;">Level</h1>
+                        <br>
+                        <p id="demo">
+                            <input id="Level" type="Level" placeholder="Level"
+                                style="width: 100%; background-color: transparent; border: none; border-bottom: 2px solid gray;">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <button type="button" class="btn btn-success"
+                style="margin-bottom: 30px; justify-self: center;">Submit</button>
+        </div>
+
+
+    </body>
+    <script>
+        var menuBtn = document.getElementById('menuBtn');
+        var mobileNav = document.getElementById('mobileNav');
+        // mobileNav.classList.add("menuOpen")
+        menuBtn.addEventListener('click', toggleMenu);
+        function toggleMenu() {
+            mobileNav.classList.toggle("menuOpen");
+        }
+
+
+
+        const courses = {
+            // 'STA 129': "100 Level",
+            // 'CSC 113': "100 Level",
+            // 'CSC 219': "200 Level",
+            // 'CSC 225': "200 Level",
+            // 'CSC 217': "200 Level",
+            // 'CSC 305': "300 Level",
+            // 'CSC 322': "300 Level",
+            // 'CSC 429': "400 Level",
+            // 'CSC 425': "400 Level",
+        };
+
+        function myFunction() {
+            var x = document.getElementById("courses");
+            let y  = x.options[x.selectedIndex].getAttribute('data-level');
+
+            // alert(y);
+            document.getElementById("demo").innerHTML = y;
+        }
+
+    </script>
+
+    </html>
