@@ -3,6 +3,26 @@ body {
   background: #ecf0f1;
   color: #34495e;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.table-custom-success {
+  --bs-table-color: white;
+    --bs-table-bg: limegreen;
+}
+
+aside{
+  background-color: #DBFFDB;
+}
 
 .nav a{
   color: #0e0e0e;
@@ -25,6 +45,7 @@ color: #34495e;
     transform: scale(1.05,1);
 }
 
+
 @media screen and (max-width: 868px) {
 #mobileNav{
   transition: .5s ease-in-out;
@@ -33,5 +54,4 @@ color: #34495e;
   translate: -100%;
   transition: .5s ease-in-out;
 }
-
 }

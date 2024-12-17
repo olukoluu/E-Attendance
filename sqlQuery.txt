@@ -1,0 +1,87 @@
+query to create lecturers TABLE
+
+CREATE TABLE lecturers (
+  id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  pfn INT(11) NOT NULL,
+  pwd VARCHAR(225) NOT NULL,
+  time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+
+query to create the courses TABLE
+
+CREATE TABLE courses ( 
+  id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+  course_code VARCHAR(30) NOT NULL, 
+  course_title VARCHAR(255) NOT NULL, 
+  level VARCHAR(50) NOT NULL, 
+  time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+  );
+
+insert courses into db
+
+  INSERT INTO courses (course_code, course_title, level) 
+VALUES ("CSC 219", "Python Programming", 200),
+("CSC 305", "Web development", 300),
+("CSC 225", "Data Structure", 200),
+("CSC 217", "Operating System", 200),
+("CSC 322", "Networking", 300),
+("CSC 411", "Information Science", 400),
+("STA 129", "Introduction to Statistics", 100),
+("CSC 429", "Human Computer Interaction", 400),
+("CSC 425", "Introduction to Cybersecurity", 400)
+
+create lecturer_courses TABLE
+
+CREATE TABLE lecturer_course(
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    lecturer_id INT(11),
+    course_id INT(11),
+  	FOREIGN KEY (lecturer_id) REFERENCES lecturers(id) ON DELETE SET NULL,
+  	FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE SET NULL, 
+  	time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);
+
+ -- Table structure for table `students bio data`
+--
+
+CREATE TABLE `students_bio_data` (
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `matric_number` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `time_sent` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `level` int(11) DEFAULT NULL
+)
+
+
+
+
+--
+-- Dumping data for table `students bio data`
+--
+
+INSERT INTO `students_bio_data` (`First_name`, `last_name`, `matric_number`, `Email`, 'level') VALUES
+('Nimah', 'Adeleke', 2024001, 'nimah@gmail.com', 100),
+('Peter', 'Soyode', 2024002, 'peter@gmail.com', 200),
+('Vincent', 'Seun', 2024003, 'vincent@gmail.com', 300),
+('Emmanuel', 'Frank', 2024004, 'emmanuel@gmail.com', 400),
+('Gabriel', 'Obeki', 2024005, 'gabriel@gmail.com', 100),
+('Precious', 'Edosa', 2024006, 'precious@gmail.com', 200),
+('Martin', 'Ogungbo', 2024007, 'martin@gmail.com', 300),
+('Uthman', 'Olukolu', 2024008, 'uthman@gmail.com', 400),
+('Seun', 'PM', 2024009, 'seun@gmail.com', 100),
+('Precious', 'ST', 2024010, 'precious@gmail.com', 200);
+
+CREATE TABLE attendance (
+    attendance_id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    student_id INT(11),
+    course_id INT(11),
+    week int(11) NOT NULL,
+  	FOREIGN KEY (student_id) REFERENCES students_bio_data(matric_number) ON DELETE SET NULL, 
+  	FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE SET NULL, 
+  	time_sent datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+);
